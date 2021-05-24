@@ -1,8 +1,32 @@
+let punto0Element = document.querySelector("#punto0");
+let punto1Element = document.querySelector("#punto1");
+let punto2Element = document.querySelector("#punto2");
+let punto3Element = document.querySelector("#punto3");
+let punto4Element = document.querySelector("#punto4");
+let punto5Element = document.querySelector("#punto5");
+let punto6Element = document.querySelector("#punto6");
+let punto7Element = document.querySelector("#punto7");
+let punto8Element = document.querySelector("#punto8");
+let punto9Element = document.querySelector("#punto9");
+let punto10Element = document.querySelector("#punto10");
+let punto11Element = document.querySelector("#punto11");
+let punto12Element = document.querySelector("#punto12");
+let punto13Element = document.querySelector("#punto13");
+let punto14Element = document.querySelector("#punto14");
+let punto15Element = document.querySelector("#punto15");
+let punto16Element = document.querySelector("#punto16");
+let punto17Element = document.querySelector("#punto17");
+let punto18Element = document.querySelector("#punto18");
+let punto19Element = document.querySelector("#punto19");
+let punto20Element = document.querySelector("#punto20");
+
 var APP_DATA = {
   scenes: [
     {
       id: "0-ps_1",
+      idn: 0,
       name: "PS_1",
+      punto: punto0Element,
       levels: [
         {
           tileSize: 256,
@@ -24,8 +48,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: -0.020138414446089214,
-        pitch: 0.12127079011934683,
+        yaw: 0, //-0.020138414446089214,
+        pitch: 0, //0.12127079011934683,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -47,7 +71,9 @@ var APP_DATA = {
     },
     {
       id: "1-ps_2",
+      idn: 1,
       name: "PS_2",
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -69,8 +95,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 0.036249146002960586,
-        pitch: 0.10421708525880646,
+        yaw: 0, //0.036249146002960586,
+        pitch: 0, //0.10421708525880646,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -91,7 +117,9 @@ var APP_DATA = {
     },
     {
       id: "2-ps_3",
+      idn: 2,
       name: "PS_3",
+      punto: punto2Element,
       levels: [
         {
           tileSize: 256,
@@ -113,8 +141,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 0.2309210066996279,
-        pitch: 0.22169816318692526,
+        yaw: -0.3, //0.2309210066996279,
+        pitch: 0.2, //0.22169816318692526,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -134,13 +162,13 @@ var APP_DATA = {
           yaw: -0.8894050731484828,
           pitch: 0.6588335987407259,
           rotation: 0,
-          target: "14-ss_7",
+          target: "6-ps_7",
         },
         {
           yaw: 1.299134298252758,
           pitch: 0.4103260459489846,
           rotation: 0,
-          target: "15-ss_8",
+          target: "7-ps_8",
         },
         {
           yaw: -3.0207209510629216,
@@ -153,7 +181,9 @@ var APP_DATA = {
     },
     {
       id: "3-ps_4",
+      idn: 3,
       name: "PS_4",
+      punto: punto3Element,
       levels: [
         {
           tileSize: 256,
@@ -209,7 +239,9 @@ var APP_DATA = {
     },
     {
       id: "4-ps_5",
+      idn: 4,
       name: "PS_5",
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -232,7 +264,7 @@ var APP_DATA = {
       faceSize: 1440,
       initialViewParameters: {
         yaw: 0.4414285990175486,
-        pitch: -0.11497449587588804,
+        pitch: 0.3, //-0.11497449587588804,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -253,7 +285,9 @@ var APP_DATA = {
     },
     {
       id: "5-ps_6",
+      idn: 5,
       name: "PS_6",
+      punto: punto5Element,
       levels: [
         {
           tileSize: 256,
@@ -297,7 +331,9 @@ var APP_DATA = {
     },
     {
       id: "6-ps_7",
+      idn: 6,
       name: "PS_7",
+      punto: punto6Element,
       levels: [
         {
           tileSize: 256,
@@ -341,7 +377,9 @@ var APP_DATA = {
     },
     {
       id: "7-ps_8",
+      idn: 7,
       name: "PS_8",
+      punto: punto7Element,
       levels: [
         {
           tileSize: 256,
@@ -391,7 +429,9 @@ var APP_DATA = {
     },
     {
       id: "8-ss_1",
+      idn: 8,
       name: "SS_1",
+      punto: punto8Element,
       levels: [
         {
           tileSize: 256,
@@ -422,7 +462,7 @@ var APP_DATA = {
           yaw: -0.1564433819693427,
           pitch: 0.4084474858316032,
           rotation: 0,
-          target: "1-ps_2",
+          target: "9-ss_2",
         },
         {
           yaw: -0.8008896983791658,
@@ -440,14 +480,16 @@ var APP_DATA = {
           yaw: 3.1106465236831884,
           pitch: 0.5492005112615868,
           rotation: 0,
-          target: "4-ps_5",
+          target: "12-ss_5",
         },
       ],
       infoHotspots: [],
     },
     {
       id: "9-ss_2",
+      idn: 9,
       name: "SS_2",
+      punto: punto9Element,
       levels: [
         {
           tileSize: 256,
@@ -503,7 +545,9 @@ var APP_DATA = {
     },
     {
       id: "10-ss_3",
+      idn: 10,
       name: "SS_3",
+      punto: punto10Element,
       levels: [
         {
           tileSize: 256,
@@ -553,7 +597,9 @@ var APP_DATA = {
     },
     {
       id: "11-ss_4",
+      idn: 11,
       name: "SS_4",
+      punto: punto11Element,
       levels: [
         {
           tileSize: 256,
@@ -597,7 +643,9 @@ var APP_DATA = {
     },
     {
       id: "12-ss_5",
+      idn: 12,
       name: "SS_5",
+      punto: punto12Element,
       levels: [
         {
           tileSize: 256,
@@ -647,7 +695,9 @@ var APP_DATA = {
     },
     {
       id: "13-ss_6",
+      idn: 13,
       name: "SS_6",
+      punto: punto13Element,
       levels: [
         {
           tileSize: 256,
@@ -691,7 +741,9 @@ var APP_DATA = {
     },
     {
       id: "14-ss_7",
+      idn: 14,
       name: "SS_7",
+      punto: punto14Element,
       levels: [
         {
           tileSize: 256,
@@ -713,7 +765,7 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: -0.3235565998987404,
+        yaw: -0.1, //-0.3235565998987404,
         pitch: 0.12695535840618177,
         fov: 1.3074507059741394,
       },
@@ -747,7 +799,9 @@ var APP_DATA = {
     },
     {
       id: "15-ss_8",
+      idn: 15,
       name: "SS_8",
+      punto: punto15Element,
       levels: [
         {
           tileSize: 256,
@@ -797,7 +851,9 @@ var APP_DATA = {
     },
     {
       id: "16-ss_9",
+      idn: 16,
       name: "SS_9",
+      punto: punto16Element,
       levels: [
         {
           tileSize: 256,
@@ -840,7 +896,7 @@ var APP_DATA = {
           yaw: 3.086329389291244,
           pitch: 0.3218668115373351,
           rotation: 0,
-          target: "6-ps_7",
+          target: "14-ss_7",
         },
         {
           yaw: -0.10491332227434569,
@@ -853,7 +909,9 @@ var APP_DATA = {
     },
     {
       id: "17-ss_10",
+      idn: 17,
       name: "SS_10",
+      punto: punto17Element,
       levels: [
         {
           tileSize: 256,
@@ -903,7 +961,9 @@ var APP_DATA = {
     },
     {
       id: "18-ss_11",
+      idn: 18,
       name: "SS_11",
+      punto: punto18Element,
       levels: [
         {
           tileSize: 256,
@@ -953,7 +1013,9 @@ var APP_DATA = {
     },
     {
       id: "19-ss_12",
+      idn: 19,
       name: "SS_12",
+      punto: punto19Element,
       levels: [
         {
           tileSize: 256,
@@ -997,7 +1059,9 @@ var APP_DATA = {
     },
     {
       id: "20-ss_13",
+      idn: 20,
       name: "SS_13",
+      punto: punto20Element,
       levels: [
         {
           tileSize: 256,
