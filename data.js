@@ -4,21 +4,6 @@ let punto2Element = document.querySelector("#punto2");
 let punto3Element = document.querySelector("#punto3");
 let punto4Element = document.querySelector("#punto4");
 let punto5Element = document.querySelector("#punto5");
-let punto6Element = document.querySelector("#punto6");
-let punto7Element = document.querySelector("#punto7");
-let punto8Element = document.querySelector("#punto8");
-let punto9Element = document.querySelector("#punto9");
-let punto10Element = document.querySelector("#punto10");
-let punto11Element = document.querySelector("#punto11");
-let punto12Element = document.querySelector("#punto12");
-let punto13Element = document.querySelector("#punto13");
-let punto14Element = document.querySelector("#punto14");
-let punto15Element = document.querySelector("#punto15");
-let punto16Element = document.querySelector("#punto16");
-let punto17Element = document.querySelector("#punto17");
-let punto18Element = document.querySelector("#punto18");
-let punto19Element = document.querySelector("#punto19");
-let punto20Element = document.querySelector("#punto20");
 
 var APP_DATA = {
   scenes: [
@@ -73,7 +58,7 @@ var APP_DATA = {
       id: "1-ps_2",
       idn: 1,
       name: "PS_2",
-      punto: punto1Element,
+      punto: punto0Element,
       levels: [
         {
           tileSize: 256,
@@ -119,7 +104,7 @@ var APP_DATA = {
       id: "2-ps_3",
       idn: 2,
       name: "PS_3",
-      punto: punto2Element,
+      punto: punto0Element,
       levels: [
         {
           tileSize: 256,
@@ -183,7 +168,7 @@ var APP_DATA = {
       id: "3-ps_4",
       idn: 3,
       name: "PS_4",
-      punto: punto3Element,
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -241,7 +226,7 @@ var APP_DATA = {
       id: "4-ps_5",
       idn: 4,
       name: "PS_5",
-      punto: punto4Element,
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -287,7 +272,7 @@ var APP_DATA = {
       id: "5-ps_6",
       idn: 5,
       name: "PS_6",
-      punto: punto5Element,
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -333,7 +318,7 @@ var APP_DATA = {
       id: "6-ps_7",
       idn: 6,
       name: "PS_7",
-      punto: punto6Element,
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -379,7 +364,7 @@ var APP_DATA = {
       id: "7-ps_8",
       idn: 7,
       name: "PS_8",
-      punto: punto7Element,
+      punto: punto1Element,
       levels: [
         {
           tileSize: 256,
@@ -431,7 +416,7 @@ var APP_DATA = {
       id: "8-ss_1",
       idn: 8,
       name: "SS_1",
-      punto: punto8Element,
+      punto: punto2Element,
       levels: [
         {
           tileSize: 256,
@@ -489,7 +474,7 @@ var APP_DATA = {
       id: "9-ss_2",
       idn: 9,
       name: "SS_2",
-      punto: punto9Element,
+      punto: punto3Element,
       levels: [
         {
           tileSize: 256,
@@ -547,7 +532,7 @@ var APP_DATA = {
       id: "10-ss_3",
       idn: 10,
       name: "SS_3",
-      punto: punto10Element,
+      punto: punto3Element,
       levels: [
         {
           tileSize: 256,
@@ -599,7 +584,7 @@ var APP_DATA = {
       id: "11-ss_4",
       idn: 11,
       name: "SS_4",
-      punto: punto11Element,
+      punto: punto3Element,
       levels: [
         {
           tileSize: 256,
@@ -645,7 +630,7 @@ var APP_DATA = {
       id: "12-ss_5",
       idn: 12,
       name: "SS_5",
-      punto: punto12Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -697,7 +682,7 @@ var APP_DATA = {
       id: "13-ss_6",
       idn: 13,
       name: "SS_6",
-      punto: punto13Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -743,7 +728,7 @@ var APP_DATA = {
       id: "14-ss_7",
       idn: 14,
       name: "SS_7",
-      punto: punto14Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -801,7 +786,7 @@ var APP_DATA = {
       id: "15-ss_8",
       idn: 15,
       name: "SS_8",
-      punto: punto15Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -853,7 +838,7 @@ var APP_DATA = {
       id: "16-ss_9",
       idn: 16,
       name: "SS_9",
-      punto: punto16Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -911,7 +896,7 @@ var APP_DATA = {
       id: "17-ss_10",
       idn: 17,
       name: "SS_10",
-      punto: punto17Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -963,7 +948,7 @@ var APP_DATA = {
       id: "18-ss_11",
       idn: 18,
       name: "SS_11",
-      punto: punto18Element,
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -1015,7 +1000,7 @@ var APP_DATA = {
       id: "19-ss_12",
       idn: 19,
       name: "SS_12",
-      punto: punto19Element,
+      punto: punto5Element,
       levels: [
         {
           tileSize: 256,
@@ -1061,7 +1046,7 @@ var APP_DATA = {
       id: "20-ss_13",
       idn: 20,
       name: "SS_13",
-      punto: punto20Element,
+      punto: punto5Element,
       levels: [
         {
           tileSize: 256,

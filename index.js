@@ -21,6 +21,7 @@
   var screenfull = window.screenfull;
   var data = window.APP_DATA;
   var textos = window.TEXTO_DATA.textos;
+  var tracks = window.TRACKS.tracks;
 
   // Grab elements from DOM.
   var panoElement = document.querySelector("#pano");
@@ -32,128 +33,109 @@
   var fullscreenToggleElement = document.querySelector("#fullscreenToggle");
 
   //***EDITANDO***
-  let mapaElement = document.querySelector(".Mapa");
-  let recorridoElement = document.querySelector(".recorrido");
-  let primerSubsueloMapaElement = document.querySelector(".primerSub");
-  let segundoSubsueloMapaElement = document.querySelector(".segundoSub");
+  //inicio
+  let contenedorPlacaNegra = document.querySelector(".contenedorPlacaNegra");
+  let boton360 = document.querySelector(".boton360");
 
-  //textos
+  //nav
+  let logoElement = document.querySelector(".logo");
+  let botonIdioma = document.querySelector("#idioma");
+  let botonSubtitulos = document.querySelector("#subtitulos");
+  let ruedita = document.querySelector("#ruedita");
+
+  //estaciones
+  let panelElement = document.querySelector(".ContenedorPanel");
   let pPanelElementEsp = document.querySelector(".txt_esp");
   let pPanelElementIng = document.querySelector(".txt_ing");
-  let botonIdioma = document.querySelector("#idioma");
-  botonIdioma.addEventListener("click", cambiarIdioma);
+  let estacionesOnElement = document.querySelector(".estacionesOn");
+  let estacionesOffElement = document.querySelector(".estacionesOff");
+  let est1On = document.querySelector("#est1On");
+  let est2On = document.querySelector("#est2On");
+  let est3On = document.querySelector("#est3On");
+  let est4On = document.querySelector("#est4On");
+  let est5On = document.querySelector("#est5On");
+  let est6On = document.querySelector("#est6On");
+  let est1Off = document.querySelector("#est1Off");
+  let est2Off = document.querySelector("#est2Off");
+  let est3Off = document.querySelector("#est3Off");
+  let est4Off = document.querySelector("#est4Off");
+  let est5Off = document.querySelector("#est5Off");
+  let est6Off = document.querySelector("#est6Off");
 
-  pPanelElementEsp.textContent = textos[0].esp;
-  pPanelElementIng.style.display = "none";
-
-  //cambiar idioma
-  function cambiarIdioma() {
-    if (pPanelElementIng.style.display === "none") {
-      pPanelElementEsp.style.display = "none";
-      pPanelElementIng.style.display = "block";
-    } else {
-      pPanelElementIng.style.display = "none";
-      pPanelElementEsp.style.display = "block";
-    }
-  }
-
+  //recorrido
+  let mapaElement = document.querySelector(".Mapa");
+  let primerSubsueloMapaElement = document.querySelector(".primerSub");
+  let segundoSubsueloMapaElement = document.querySelector(".segundoSub");
+  let recorridoOnElement = document.querySelector(".recorridoOn");
+  let recorridoOffElement = document.querySelector(".recorridoOff");
   let boton1erSubElement = document.querySelector("#btn1sub");
   let boton2doSubElement = document.querySelector("#btn2sub");
   let vac1 = document.querySelector("#vacio1");
   let vac2 = document.querySelector("#vacio2");
-
   let punto0Element = document.querySelector("#punto0");
   let punto1Element = document.querySelector("#punto1");
   let punto2Element = document.querySelector("#punto2");
   let punto3Element = document.querySelector("#punto3");
   let punto4Element = document.querySelector("#punto4");
   let punto5Element = document.querySelector("#punto5");
-  let punto6Element = document.querySelector("#punto6");
-  let punto7Element = document.querySelector("#punto7");
-  let punto8Element = document.querySelector("#punto8");
-  let punto9Element = document.querySelector("#punto9");
-  let punto10Element = document.querySelector("#punto10");
-  let punto11Element = document.querySelector("#punto11");
-  let punto12Element = document.querySelector("#punto12");
-  let punto13Element = document.querySelector("#punto13");
-  let punto14Element = document.querySelector("#punto14");
-  let punto15Element = document.querySelector("#punto15");
-  let punto16Element = document.querySelector("#punto16");
-  let punto17Element = document.querySelector("#punto17");
-  let punto18Element = document.querySelector("#punto18");
-  let punto19Element = document.querySelector("#punto19");
-  let punto20Element = document.querySelector("#punto20");
-
   let puntoActualElement = document.querySelector("#puntoActual");
 
-  //boton "recorrido" y "subsuelos"
-  recorridoElement.addEventListener("click", esconderMapa);
-  vac1.addEventListener("click", cambiar1Sub);
-  vac2.addEventListener("click", cambiar2Sub);
+  //subtitulos
+  let subElement = document.querySelector(".sub");
+
+  /*audio*/
+  let track = document.createElement("audio");
+  let muteElement = document.querySelector(".audios");
+  let currentTimeElement = document.querySelector("#currentTime");
+
+  pPanelElementEsp.innerHTML = textos[0].esp;
+
+  //empezar
+  function empezar() {
+    contenedorPlacaNegra.classList.add("disabled");
+  }
+
+  boton360.addEventListener("click", empezar);
+
+  //cambiar idioma
+  function cambiarIdioma() {
+    pPanelElementEsp.classList.toggle("disabled");
+    pPanelElementIng.classList.toggle("enabled");
+  }
+
+  botonIdioma.addEventListener("click", cambiarIdioma);
 
   //botones (puntos) del mapa
+  //mostrar punto actual si estaba oculto
+  function mostrarPunto() {
+    if (puntoActualElement.classList.contains("disabled")) {
+      puntoActualElement.classList.toggle("disabled");
+    }
+  }
+
   punto0Element.addEventListener("click", function () {
     switchScene(scenes[0]);
+    mostrarPunto();
   });
   punto1Element.addEventListener("click", function () {
-    switchScene(scenes[1]);
+    switchScene(scenes[3]);
+    mostrarPunto();
   });
   punto2Element.addEventListener("click", function () {
-    switchScene(scenes[2]);
+    switchScene(scenes[8]);
+    mostrarPunto();
   });
   punto3Element.addEventListener("click", function () {
-    switchScene(scenes[3]);
+    switchScene(scenes[9]);
+    mostrarPunto();
   });
   punto4Element.addEventListener("click", function () {
-    switchScene(scenes[4]);
+    switchScene(scenes[12]);
+    mostrarPunto();
   });
   punto5Element.addEventListener("click", function () {
-    switchScene(scenes[5]);
-  });
-  punto6Element.addEventListener("click", function () {
-    switchScene(scenes[6]);
-  });
-  punto7Element.addEventListener("click", function () {
-    switchScene(scenes[7]);
-  });
-  punto8Element.addEventListener("click", function () {
-    switchScene(scenes[8]);
-  });
-  punto9Element.addEventListener("click", function () {
-    switchScene(scenes[9]);
-  });
-  punto10Element.addEventListener("click", function () {
-    switchScene(scenes[10]);
-  });
-  punto11Element.addEventListener("click", function () {
-    switchScene(scenes[11]);
-  });
-  punto12Element.addEventListener("click", function () {
-    switchScene(scenes[12]);
-  });
-  punto13Element.addEventListener("click", function () {
-    switchScene(scenes[13]);
-  });
-  punto14Element.addEventListener("click", function () {
     switchScene(scenes[14]);
-  });
-  punto15Element.addEventListener("click", function () {
-    switchScene(scenes[15]);
-  });
-  punto16Element.addEventListener("click", function () {
-    switchScene(scenes[16]);
-  });
-  punto17Element.addEventListener("click", function () {
-    switchScene(scenes[17]);
-  });
-  punto18Element.addEventListener("click", function () {
-    switchScene(scenes[18]);
-  });
-  punto19Element.addEventListener("click", function () {
-    switchScene(scenes[19]);
-  });
-  punto20Element.addEventListener("click", function () {
-    switchScene(scenes[20]);
+    mostrarPunto();
   });
 
   //posicionar punto indicador de la escena en curso
@@ -167,16 +149,33 @@
     puntoActualElement.style.left = posx;
   }
 
-  //mostrar/esconder mapa -> boton "recorrido"
-  function esconderMapa() {
-    if (mapaElement.style.display === "none") {
-      mapaElement.style.display = "block";
-    } else {
-      mapaElement.style.display = "none";
+  function showMapa() {
+    mapaElement.classList.toggle("enabled");
+    recorridoOffElement.classList.toggle("disabled");
+    recorridoOnElement.classList.toggle("enabled");
+    if (panelElement.classList.contains("enabled")) {
+      panelElement.classList.toggle("enabled");
+      estacionesOffElement.classList.toggle("disabled");
+      estacionesOnElement.classList.toggle("enabled");
+    }
+  }
+  function mostrarPanel() {
+    panelElement.classList.toggle("enabled");
+    estacionesOffElement.classList.toggle("disabled");
+    estacionesOnElement.classList.toggle("enabled");
+    if (mapaElement.classList.contains("enabled")) {
+      mapaElement.classList.toggle("enabled");
+      recorridoOffElement.classList.toggle("disabled");
+      recorridoOnElement.classList.toggle("enabled");
     }
   }
 
-  //Cambia el mapa de subsuelo
+  recorridoOffElement.addEventListener("click", showMapa);
+  recorridoOnElement.addEventListener("click", showMapa);
+  estacionesOffElement.addEventListener("click", mostrarPanel);
+  estacionesOnElement.addEventListener("click", mostrarPanel);
+
+  //Cambia el mapa de subsuelo con el cambio de escena
   function mostrarMapa(scene) {
     let sceneActual = scene.data.id;
     let orden = sceneActual.split("-");
@@ -194,22 +193,29 @@
     }
   }
 
-  //cambiar Subsuelo
+  //boton cambiar Subsuelo
   function cambiar1Sub() {
+    vac1.style.visibility = "hidden";
+    vac2.style.visibility = "visible";
     primerSubsueloMapaElement.style.display = "block";
     segundoSubsueloMapaElement.style.display = "none";
     boton1erSubElement.style.display = "block";
     boton2doSubElement.style.display = "none";
+    puntoActualElement.classList.toggle("disabled");
   }
 
   function cambiar2Sub() {
+    vac2.style.visibility = "hidden";
+    vac1.style.visibility = "visible";
     primerSubsueloMapaElement.style.display = "none";
     segundoSubsueloMapaElement.style.display = "block";
     boton1erSubElement.style.display = "none";
     boton2doSubElement.style.display = "block";
+    puntoActualElement.classList.toggle("disabled");
   }
 
-  //setear escena anterior
+  vac1.addEventListener("click", cambiar1Sub);
+  vac2.addEventListener("click", cambiar2Sub);
 
   //***EDITANDO***
 
@@ -478,8 +484,41 @@
 
   //cambiar texto
   function cambiarTextos(id) {
-    pPanelElementEsp.textContent = textos[`${id}`].esp;
-    pPanelElementIng.textContent = textos[`${id}`].ing;
+    if (id <= 2) {
+      let nuevotexto = document.createElement("div");
+      nuevotexto.textContent = textos[0].esp;
+      pPanelElementEsp.appendChild(nuevotexto);
+      est1On.classList.toggle("enabled");
+      est1Off.classList.toggle("enabled");
+      /*pPanelElementEsp.innerHTML = textos[0].esp;
+      pPanelElementIng.innerHTML = textos[0].ing;
+      est1On.classList.toggle("enabled");*/
+    } else if (id > 2 && id <= 7) {
+      pPanelElementEsp.innerHTML = textos[1].esp;
+      pPanelElementIng.innerHTML = textos[1].ing;
+      est2On.classList.toggle("enabled");
+      est2Off.classList.toggle("enabled");
+    } else if (id === 8) {
+      pPanelElementEsp.innerHTML = textos[2].esp;
+      pPanelElementIng.innerHTML = textos[2].ing;
+      est3On.classList.toggle("enabled");
+      est3Off.classList.toggle("enabled");
+    } else if (id > 8 && id <= 11) {
+      pPanelElementEsp.innerHTML = textos[3].esp;
+      pPanelElementIng.innerHTML = textos[3].ing;
+      est4On.classList.toggle("enabled");
+      est4Off.classList.toggle("enabled");
+    } else if (id > 11 && id <= 18) {
+      pPanelElementEsp.innerHTML = textos[4].esp;
+      pPanelElementIng.innerHTML = textos[4].ing;
+      est5On.classList.toggle("enabled");
+      est5Off.classList.toggle("enabled");
+    } else if (id >= 19) {
+      pPanelElementEsp.innerHTML = textos[5].esp;
+      pPanelElementIng.innerHTML = textos[5].ing;
+      est6On.classList.toggle("enabled");
+      est6Off.classList.toggle("enabled");
+    }
   }
 
   /*editado */
@@ -690,6 +729,46 @@
       }
     }
     return null;
+  }
+
+  //tracks
+
+  const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${minutes}:${returnedSeconds}`;
+  };
+
+  /*
+    currentTimeElement.textContent = calculateTime(
+      track.duration - track.currentTime
+    )
+*/
+
+  function mute_sound() {
+    track.volume = 0;
+    volume.value = 0;
+  }
+
+  function playTrack(tk) {
+    track.src = tracks[tk].path;
+    pausesong();
+    console.log("sonido pausado");
+  }
+
+  function pausesong() {
+    track.pause();
+  }
+
+  function volume_change() {
+    volume_show.innerHTML = recent_volume.value;
+    track.volume = recent_volume.value / 100;
+  }
+
+  function change_duration() {
+    slider_position = track.duration * (slider.value / 100);
+    track.currentTime = slider_position;
   }
 
   // Display the initial scene.
