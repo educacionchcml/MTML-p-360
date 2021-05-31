@@ -1,89 +1,325 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.6.3/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.6.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-functions.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.6.3/firebase-performance.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+    <title>Los misteriosos túneles</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+    <style>
+      @-ms-viewport {
+        width: device-width;
       }
     </style>
+    <link rel="stylesheet" href="vendor/reset.min.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <body class="multiple-scenes">
+    <div id="pano"></div>
+
+    <!-- EDITANDO -->
+    <div class="contenedorPlacaNegra">
+      <div class="placaNegra">
+        <img class="negro" src="./assets/placaNegra.png" alt="placaNegra" />
+        <img
+          class="logosIber"
+          src="./assets/desk_logosIber.png"
+          alt="logosIber"
+        />
+        <img
+          class="logosMuseos"
+          src="./assets/desk_logosMuseos.png"
+          alt="logosMuseos"
+        />
+      </div>
+      <div class="botonesInicio">
+        <img class="boton360" src="./assets/desk_boton360.png" alt="boton360" />
+        <img class="barrita" src="./assets/desk_barrita.png" alt="barrita" />
+        <img
+          class="botonJuego"
+          src="./assets/desk_botonJuego.png"
+          alt="botonJuego"
+        />
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <div class="nav">
+      <div class="logo">
+        <img id="menu" src="/assets/desk_logo.png" alt="menu" />
+      </div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+      <div class="botones">
+        <img id="subtitulos" src="/assets/desk_subs.png" alt="subtitulos" />
+
+        <img id="idioma" src="/assets/desk_idioma.png" alt="idioma" />
+      </div>
+
+      <div class="navIzq">
+        <img id="ruedita" src="/assets/ruedita.png" alt="ruedita" />
+      </div>
+    </div>
+
+    <div class="ContenedorPanel">
+      <div class="Panel">
+        <img class="PanelTxt" src="./assets/desk_paneltxt.png" alt="panelTxt" />
+        <div class="cajaTexto">
+          <div class="txt_esp"></div>
+          <div class="txt_ing"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ContenedorMapa">
+      <div class="recorrido">
+        <img
+          class="recorridoOn"
+          src="/assets/desk_recorridoOn.png"
+          alt="recorridoOn"
+        />
+        <img class="recorridoOff" src="/assets/desk_recorridoOff.png"
+        alt"recorridoOff" />
+        <div class="estacionesOn">
+          <img id="est1On" src="./assets/desk_estacion1On.png" alt="est1" />
+          <img id="est2On" src="./assets/desk_estacion2On.png" alt="est2" />
+          <img id="est3On" src="./assets/desk_estacion3On.png" alt="est3" />
+          <img id="est4On" src="./assets/desk_estacion4On.png" alt="est4" />
+          <img id="est5On" src="./assets/desk_estacion5On.png" alt="est5" />
+          <img id="est6On" src="./assets/desk_estacion6On.png" alt="est6" />
+        </div>
+        <div class="estacionesOff">
+          <img id="est1Off" src="./assets/desk_estacion1Off.png" alt="est1" />
+          <img id="est2Off" src="./assets/desk_estacion2Off.png" alt="est2" />
+          <img id="est3Off" src="./assets/desk_estacion3Off.png" alt="est3" />
+          <img id="est4Off" src="./assets/desk_estacion4Off.png" alt="est4" />
+          <img id="est5Off" src="./assets/desk_estacion5Off.png" alt="est5" />
+          <img id="est6Off" src="./assets/desk_estacion6Off.png" alt="est6" />
+        </div>
+      </div>
+
+      <div class="Mapa">
+        <div class="botonesSub">
+          <img
+            id="btn1sub"
+            src="/assets/desk_primerSub.png"
+            alt="botonPrimerSub"
+          />
+
+          <img
+            id="btn2sub"
+            src="/assets/desk_segundoSub.png"
+            alt="botonSegundoSub"
+          />
+          <div id="vacio1"></div>
+          <div id="vacio2"></div>
+        </div>
+
+        <!--- <img class="fondoMapa" src="/assets/fondoMapa.png" alt="fondoMapa" /> --->
+
+        <div class="Subsuelos">
+          <img id="puntoActual" src="/assets/ubicacion.png" alt="puntoActual" />
+          <div class="primerSub">
+            <img
+              class="mapaPrimerSub"
+              src="/assets/desk_mapa1.png"
+              alt="MapaPrimerSub"
+            />
+            <img id="punto0" src="/assets/punto.png" alt="punto0" />
+            <img id="punto1" src="/assets/punto.png" alt="punto1" />
+          </div>
+
+          <div class="segundoSub">
+            <img
+              class="mapaSegundoSub"
+              src="/assets/desk_mapa2.png"
+              alt="MapaSegundoSub"
+            />
+            <img id="punto2" src="/assets/punto.png" alt="punto2" />
+            <img id="punto3" src="/assets/punto.png" alt="punto3" />
+            <img id="punto4" src="/assets/punto.png" alt="punto4" />
+            <img id="punto5" src="/assets/punto.png" alt="punto5" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ContenedorTracks">
+      <div id="audioContainer">
+        <div class="audios">
+          <img id="audioOn" src="/assets/desk_audioOn.png" alt="audioOn" />
+          <img
+            id="audioMute"
+            src="/assets/desk_audioMute.png"
+            alt="audioMute"
+          />
+        </div>
+        <span id="currentTime" class="time">0:00</span>
+      </div>
+    </div>
+
+    <div class="ContenedorSubs">
+      <p class="sub">aca va el subtitulo</p>
+    </div>
+
+    <!-- EDITANDO -->
+
+    <div id="sceneList">
+      <ul class="scenes">
+        <a href="javascript:void(0)" class="scene" data-id="0-ps_1">
+          <li class="text">PS_1</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="1-ps_2">
+          <li class="text">PS_2</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="2-ps_3">
+          <li class="text">PS_3</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="3-ps_4">
+          <li class="text">PS_4</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="4-ps_5">
+          <li class="text">PS_5</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="5-ps_6">
+          <li class="text">PS_6</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="6-ps_7">
+          <li class="text">PS_7</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="7-ps_8">
+          <li class="text">PS_8</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="8-ss_1">
+          <li class="text">SS_1</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="9-ss_2">
+          <li class="text">SS_2</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="10-ss_3">
+          <li class="text">SS_3</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="11-ss_4">
+          <li class="text">SS_4</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="12-ss_5">
+          <li class="text">SS_5</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="13-ss_6">
+          <li class="text">SS_6</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="14-ss_7">
+          <li class="text">SS_7</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="15-ss_8">
+          <li class="text">SS_8</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="16-ss_9">
+          <li class="text">SS_9</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="17-ss_10">
+          <li class="text">SS_10</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="18-ss_11">
+          <li class="text">SS_11</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="19-ss_12">
+          <li class="text">SS_12</li>
+        </a>
+
+        <a href="javascript:void(0)" class="scene" data-id="20-ss_13">
+          <li class="text">SS_13</li>
+        </a>
+      </ul>
+    </div>
+
+    <div id="titleBar">
+      <h1 class="sceneName"></h1>
+    </div>
+
+    <a href="javascript:void(0)" id="autorotateToggle">
+      <img class="icon off" src="img/play.png" />
+      <img class="icon on" src="img/pause.png" />
+    </a>
+
+    <a href="javascript:void(0)" id="fullscreenToggle">
+      <img class="icon off" src="img/fullscreen.png" />
+      <img class="icon on" src="img/windowed.png" />
+    </a>
+
+    <a href="javascript:void(0)" id="sceneListToggle">
+      <img class="icon off" src="img/expand.png" />
+      <img class="icon on" src="img/collapse.png" />
+    </a>
+
+    <a
+      href="javascript:void(0)"
+      id="viewUp"
+      class="viewControlButton viewControlButton-1"
+    >
+      <img class="icon" src="img/up.png" />
+    </a>
+    <a
+      href="javascript:void(0)"
+      id="viewDown"
+      class="viewControlButton viewControlButton-2"
+    >
+      <img class="icon" src="img/down.png" />
+    </a>
+    <a
+      href="javascript:void(0)"
+      id="viewLeft"
+      class="viewControlButton viewControlButton-3"
+    >
+      <img class="icon" src="img/left.png" />
+    </a>
+    <a
+      href="javascript:void(0)"
+      id="viewRight"
+      class="viewControlButton viewControlButton-4"
+    >
+      <img class="icon" src="img/right.png" />
+    </a>
+    <a
+      href="javascript:void(0)"
+      id="viewIn"
+      class="viewControlButton viewControlButton-5"
+    >
+      <img class="icon" src="img/plus.png" />
+    </a>
+    <a
+      href="javascript:void(0)"
+      id="viewOut"
+      class="viewControlButton viewControlButton-6"
+    >
+      <img class="icon" src="img/minus.png" />
+    </a>
+
+    <script src="vendor/screenfull.min.js"></script>
+    <script src="vendor/bowser.min.js"></script>
+    <script src="vendor/marzipano.js"></script>
+
+    <script src="data.js"></script>
+    <script src="textos.js"></script>
+    <script src="tracks.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
