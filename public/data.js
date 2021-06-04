@@ -2,15 +2,16 @@ let punto0Element = document.querySelector("#punto0");
 let punto1Element = document.querySelector("#punto1");
 let punto2Element = document.querySelector("#punto2");
 let punto3Element = document.querySelector("#punto3");
-let punto4Element = document.querySelector("#punto4");
-let punto5Element = document.querySelector("#punto5");
+let punto5Element = document.querySelector("#punto4");
+let punto4Element = document.querySelector("#punto5");
 
 var APP_DATA = {
   scenes: [
     {
       id: "0-ps_1",
       idn: 0,
-      name: "PS_1",
+      estacion: 0,
+      name: "Estación 1 - 1",
       punto: punto0Element,
       levels: [
         {
@@ -49,15 +50,16 @@ var APP_DATA = {
         {
           yaw: 0.46955060082609634,
           pitch: -0.01685690977725507,
-          title: "Acceso",
-          text: '<p class="MsoNormal" style="text-align:justify;line-height:150%;tab-stops:26.6pt"><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif;\nmso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-AR">Desde la\nllamada Procuraduría de las misiones, edificada de 1730 con planos atribuidos al\narquitecto jesuita Juan Bautista Prímoli, ingresamos a los túneles de la\nManzana de las Luces. Una moderna construcción sirve de antesala a la pequeña\nescalera que nos conduce hacia ellos. <o:p></o:p></span></p>\n\n<p class="MsoNormal" style="text-align:justify;line-height:150%;tab-stops:26.6pt"><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif">Su\nexistencia en el subsuelo de Buenos Aires fascina a quienes los visitan.\nMisterios y dudas envuelven a estas construcciones coloniales restauradas en la\ndécada de 1980. <o:p></o:p></span></p>\n\n<p class="MsoNormal" style="text-align:justify;line-height:150%;tab-stops:26.6pt"><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif">¿Quién\nlos edificó? ¿Para qué se usaron? ¿Qué pasó en estas galerías? </span><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif;\nmso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-AR"><o:p></o:p></span></p>\n\n<p class="MsoNormal" style="text-align:justify;line-height:150%;tab-stops:26.6pt"><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif;\nmso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-AR">La\narqueología y la historia nos acercan algunas respuestas.&nbsp;</span><span lang="ES-AR" style="font-size:12.0pt;line-height:150%;font-family:&quot;Arial&quot;,sans-serif"><o:p></o:p></span></p>',
+          title: "Greslebin",
+          text: '<img src="./assets/greslebin.jpg" alt="greslebin">\n <p>Héctor Greslebin en uno de los túneles coloniales debajo de la Manzana de las Luces, 1920.</p>',
         },
       ],
     },
     {
       id: "1-ps_2",
       idn: 1,
-      name: "PS_2",
+      estacion: 0,
+      name: "Estación 1 - 2",
       punto: punto0Element,
       levels: [
         {
@@ -103,7 +105,8 @@ var APP_DATA = {
     {
       id: "2-ps_3",
       idn: 2,
-      name: "PS_3",
+      estacion: 0,
+      name: "Estación 1 - 3",
       punto: punto0Element,
       levels: [
         {
@@ -167,7 +170,8 @@ var APP_DATA = {
     {
       id: "3-ps_4",
       idn: 3,
-      name: "PS_4",
+      estacion: 1,
+      name: "Estación 2 - 1",
       punto: punto1Element,
       levels: [
         {
@@ -225,7 +229,8 @@ var APP_DATA = {
     {
       id: "4-ps_5",
       idn: 4,
-      name: "PS_5",
+      estacion: 1,
+      name: "Estación 2 - 2",
       punto: punto1Element,
       levels: [
         {
@@ -271,7 +276,8 @@ var APP_DATA = {
     {
       id: "5-ps_6",
       idn: 5,
-      name: "PS_6",
+      estacion: 1,
+      name: "Estación 2 - 3",
       punto: punto1Element,
       levels: [
         {
@@ -317,7 +323,8 @@ var APP_DATA = {
     {
       id: "6-ps_7",
       idn: 6,
-      name: "PS_7",
+      estacion: 1,
+      name: "Estación 2 - 4",
       punto: punto1Element,
       levels: [
         {
@@ -363,7 +370,8 @@ var APP_DATA = {
     {
       id: "7-ps_8",
       idn: 7,
-      name: "PS_8",
+      estacion: 1,
+      name: "Estación 2 - 5",
       punto: punto1Element,
       levels: [
         {
@@ -415,7 +423,8 @@ var APP_DATA = {
     {
       id: "8-ss_1",
       idn: 8,
-      name: "SS_1",
+      estacion: 2,
+      name: "Estación 3 - 1",
       punto: punto2Element,
       levels: [
         {
@@ -473,7 +482,8 @@ var APP_DATA = {
     {
       id: "9-ss_2",
       idn: 9,
-      name: "SS_2",
+      estacion: 3,
+      name: "Estación 4 - 1",
       punto: punto3Element,
       levels: [
         {
@@ -531,7 +541,8 @@ var APP_DATA = {
     {
       id: "10-ss_3",
       idn: 10,
-      name: "SS_3",
+      estacion: 3,
+      name: "Estación 4 - 2",
       punto: punto3Element,
       levels: [
         {
@@ -583,7 +594,8 @@ var APP_DATA = {
     {
       id: "11-ss_4",
       idn: 11,
-      name: "SS_4",
+      estacion: 3,
+      name: "Estación 4 - 3",
       punto: punto3Element,
       levels: [
         {
@@ -629,8 +641,9 @@ var APP_DATA = {
     {
       id: "12-ss_5",
       idn: 12,
-      name: "SS_5",
-      punto: punto4Element,
+      estacion: 5,
+      name: "Estación 6 - 1",
+      punto: punto5Element,
       levels: [
         {
           tileSize: 256,
@@ -681,8 +694,9 @@ var APP_DATA = {
     {
       id: "13-ss_6",
       idn: 13,
-      name: "SS_6",
-      punto: punto4Element,
+      estacion: 5,
+      name: "Estación 6 - 2",
+      punto: punto5Element,
       levels: [
         {
           tileSize: 256,
@@ -727,7 +741,8 @@ var APP_DATA = {
     {
       id: "14-ss_7",
       idn: 14,
-      name: "SS_7",
+      estacion: 4,
+      name: "Estación 5 - 1",
       punto: punto4Element,
       levels: [
         {
@@ -785,7 +800,8 @@ var APP_DATA = {
     {
       id: "15-ss_8",
       idn: 15,
-      name: "SS_8",
+      estacion: 4,
+      name: "Estación 5 - 2",
       punto: punto4Element,
       levels: [
         {
@@ -837,7 +853,8 @@ var APP_DATA = {
     {
       id: "16-ss_9",
       idn: 16,
-      name: "SS_9",
+      estacion: 4,
+      name: "Estación 5 - 3",
       punto: punto4Element,
       levels: [
         {
@@ -895,7 +912,8 @@ var APP_DATA = {
     {
       id: "17-ss_10",
       idn: 17,
-      name: "SS_10",
+      estacion: 4,
+      name: "Estación 5 - 4",
       punto: punto4Element,
       levels: [
         {
@@ -947,7 +965,8 @@ var APP_DATA = {
     {
       id: "18-ss_11",
       idn: 18,
-      name: "SS_11",
+      estacion: 4,
+      name: "Estación 5 - 5",
       punto: punto4Element,
       levels: [
         {
@@ -999,8 +1018,9 @@ var APP_DATA = {
     {
       id: "19-ss_12",
       idn: 19,
-      name: "SS_12",
-      punto: punto5Element,
+      estacion: 4,
+      name: "Estación 5 - 6",
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,
@@ -1045,8 +1065,9 @@ var APP_DATA = {
     {
       id: "20-ss_13",
       idn: 20,
-      name: "SS_13",
-      punto: punto5Element,
+      estacion: 4,
+      name: "Estación 5 - 7",
+      punto: punto4Element,
       levels: [
         {
           tileSize: 256,

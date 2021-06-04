@@ -22,6 +22,7 @@
   var data = window.APP_DATA;
   var textos = window.TEXTO_DATA.textos;
   var tracks = window.TRACKS.tracks;
+  var subs = window.SUBS.estaciones;
 
   // Grab elements from DOM.
   var panoElement = document.querySelector("#pano");
@@ -35,16 +36,20 @@
   //***EDITANDO***
   //inicio
   let contenedorPlacaNegra = document.querySelector(".contenedorPlacaNegra");
+  let logosIber = document.querySelector(".logosIber");
+  let logosMuseos = document.querySelector(".logosMuseos");
   let boton360 = document.querySelector(".boton360");
+  let barrita = document.querySelector(".barrita");
 
   //nav
   let logoElement = document.querySelector(".logo");
   let botonIdioma = document.querySelector("#idioma");
-  let botonSubtitulos = document.querySelector("#subtitulos");
-  let ruedita = document.querySelector("#ruedita");
+  //let botonSubtitulos = document.querySelector("#subtitulos");
+  //let ruedita = document.querySelector("#ruedita");
 
   //estaciones
   let panelElement = document.querySelector(".ContenedorPanel");
+  let estacionesFondo = document.querySelector(".PanelTxt");
   let pPanelElementEsp = document.querySelector(".txt_esp");
   let pPanelElementIng = document.querySelector(".txt_ing");
   let estacionesOnElement = document.querySelector(".estacionesOn");
@@ -61,6 +66,7 @@
   let est4Off = document.querySelector("#est4Off");
   let est5Off = document.querySelector("#est5Off");
   let est6Off = document.querySelector("#est6Off");
+  let anchoMapa = document.querySelector("Subsuelos");
 
   //recorrido
   let mapaElement = document.querySelector(".Mapa");
@@ -76,23 +82,26 @@
   let punto1Element = document.querySelector("#punto1");
   let punto2Element = document.querySelector("#punto2");
   let punto3Element = document.querySelector("#punto3");
-  let punto4Element = document.querySelector("#punto4");
-  let punto5Element = document.querySelector("#punto5");
+  let punto5Element = document.querySelector("#punto4");
+  let punto4Element = document.querySelector("#punto5");
   let puntoActualElement = document.querySelector("#puntoActual");
+  let mapa1Img = document.querySelector(".mapaPrimerSub");
+  let mapa2Img = document.querySelector(".mapaSegundoSub");
 
   //subtitulos
   let subElement = document.querySelector(".sub");
 
   /*audio*/
   let track = document.createElement("audio");
+  track.setAttribute("controls", true);
   let muteElement = document.querySelector(".audios");
   let currentTimeElement = document.querySelector("#currentTime");
-
-  pPanelElementEsp.innerHTML = textos[0].esp;
 
   //empezar
   function empezar() {
     contenedorPlacaNegra.classList.add("disabled");
+    switchScene(scenes[0]);
+    playTrack(0);
   }
 
   boton360.addEventListener("click", empezar);
@@ -107,35 +116,48 @@
 
   //botones (puntos) del mapa
   //mostrar punto actual si estaba oculto
+
   function mostrarPunto() {
     if (puntoActualElement.classList.contains("disabled")) {
-      puntoActualElement.classList.toggle("disabled");
+      puntoActualElement.classList.remove("disabled");
     }
   }
 
   punto0Element.addEventListener("click", function () {
     switchScene(scenes[0]);
-    mostrarPunto();
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto1Element.addEventListener("click", function () {
     switchScene(scenes[3]);
-    mostrarPunto();
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto2Element.addEventListener("click", function () {
     switchScene(scenes[8]);
-    mostrarPunto();
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto3Element.addEventListener("click", function () {
     switchScene(scenes[9]);
-    mostrarPunto();
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto4Element.addEventListener("click", function () {
-    switchScene(scenes[12]);
-    mostrarPunto();
+    switchScene(scenes[14]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto5Element.addEventListener("click", function () {
-    switchScene(scenes[14]);
-    mostrarPunto();
+    switchScene(scenes[12]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
 
   //posicionar punto indicador de la escena en curso
@@ -147,6 +169,9 @@
     let posx = posxActual.getPropertyValue("left");
     puntoActualElement.style.top = posy;
     puntoActualElement.style.left = posx;
+    window.onresize = () => {
+      posicionPunto(scene);
+    };
   }
 
   function showMapa() {
@@ -176,20 +201,23 @@
   estacionesOnElement.addEventListener("click", mostrarPanel);
 
   //Cambia el mapa de subsuelo con el cambio de escena
-  function mostrarMapa(scene) {
-    let sceneActual = scene.data.id;
-    let orden = sceneActual.split("-");
-
-    if (orden[0] <= 7) {
+  function mostrarMapa(orden) {
+    if (orden <= 7) {
       primerSubsueloMapaElement.style.display = "block";
       segundoSubsueloMapaElement.style.display = "none";
       boton1erSubElement.style.display = "block";
       boton2doSubElement.style.display = "none";
+      //probando
+      vac1.style.visibility = "hidden";
+      vac2.style.visibility = "visible";
     } else {
       primerSubsueloMapaElement.style.display = "none";
       segundoSubsueloMapaElement.style.display = "block";
       boton1erSubElement.style.display = "none";
       boton2doSubElement.style.display = "block";
+      //probando
+      vac2.style.visibility = "hidden";
+      vac1.style.visibility = "visible";
     }
   }
 
@@ -235,6 +263,23 @@
     mql.addListener(setMode);
   } else {
     document.body.classList.add("desktop");
+  }
+
+  //mostrar assets para desktop o mobile
+  if (document.body.classList.contains("mobile")) {
+    mapa1Img.setAttribute("src", "/assets/mob_mapa1.png");
+    mapa2Img.setAttribute("src", "/assets/mob_mapa2.png");
+    estacionesFondo.setAttribute("src", "/assets/mob_paneltxt.png");
+    barrita.setAttribute("src", "./assets/mob_barrita.png");
+    logosIber.setAttribute("src", "./assets/mob_logosIber.png");
+    logosMuseos.setAttribute("src", "./assets/mob_logosMuseos.png");
+  } else {
+    mapa1Img.setAttribute("src", "/assets/desk_mapa1.png");
+    mapa2Img.setAttribute("src", "/assets/desk_mapa2.png");
+    estacionesFondo.setAttribute("src", "/assets/desk_paneltxt.png");
+    barrita.setAttribute("src", "./assets/desk_barrita.png");
+    logosIber.setAttribute("src", "./assets/desk_logosIber.png");
+    logosMuseos.setAttribute("src", "./assets/desk_logosMuseos.png");
   }
 
   // Detect whether we are on a touch device.
@@ -310,9 +355,9 @@
 
   // Set up autorotate, if enabled.
   var autorotate = Marzipano.autorotate({
-    yawSpeed: 0.03,
-    targetPitch: 0,
-    targetFov: Math.PI / 2,
+    yawSpeed: -0.02, //estaba 0.03
+    targetPitch: 0.3,
+    targetFov: Math.PI / 1, //estaba 2
   });
   if (data.settings.autorotateEnabled) {
     autorotateToggleElement.classList.add("enabled");
@@ -439,39 +484,52 @@
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
   }
 
-  /*editado*/
-
-  function switchScene(scene) {
-    sceneAnterior(scene);
-    stopAutorotate();
-
-    let ivp2 = { ...scene.data.initialViewParameters };
-    let yaw = ivp2.yaw;
-    let pitch = ivp2.pitch;
-
-    if (scene.data.idn >= escenaAnt[0].data.idn || scene.data.idn === 8) {
-      scene.view.setParameters(scene.data.initialViewParameters);
-    } else if (
-      scene.data.idn >= escenaAnt[0].data.idn ||
-      scene.data.idn === 7
-    ) {
-      ivp2.yaw = yaw + 2;
-      ivp2.pitch = pitch - 0.5;
-      scene.view.setParameters(ivp2);
-    } else {
-      ivp2.yaw = yaw + 3.15;
-      scene.view.setParameters(ivp2);
-    }
-
-    scene.scene.switchTo();
-    cambiarTextos(scene.data.idn);
-    startAutorotate();
-    updateSceneName(scene);
-    updateSceneList(scene);
-    mostrarMapa(scene); //editado
-    posicionPunto(scene); //editado
+  /***EDITADO***/
+  //cambiar el numero en el boton estacion, cambiar el texto de los paneles
+  function cambiarEstacion(estacion, tiempo) {
+    let todasEst = [
+      est1On,
+      est2On,
+      est3On,
+      est4On,
+      est5On,
+      est6On,
+      est1Off,
+      est2Off,
+      est3Off,
+      est4Off,
+      est5Off,
+      est6Off,
+    ];
+    todasEst.forEach((element) => element.classList.remove("enabled"));
+    pPanelElementEsp.innerHTML = textos[`${estacion}`].esp;
+    pPanelElementIng.innerHTML = textos[`${estacion}`].ing;
+    return mostrarEstacion(estacion);
   }
 
+  function mostrarEstacion(estacion) {
+    if (estacion == 0) {
+      est1On.classList.add("enabled");
+      est1Off.classList.add("enabled");
+    } else if (estacion == 1) {
+      est2On.classList.add("enabled");
+      est2Off.classList.add("enabled");
+    } else if (estacion == 2) {
+      est3On.classList.toggle("enabled");
+      est3Off.classList.toggle("enabled");
+    } else if (estacion == 3) {
+      est4On.classList.toggle("enabled");
+      est4Off.classList.toggle("enabled");
+    } else if (estacion == 4) {
+      est5On.classList.toggle("enabled");
+      est5Off.classList.toggle("enabled");
+    } else {
+      est6On.classList.toggle("enabled");
+      est6Off.classList.toggle("enabled");
+    }
+  }
+
+  //crea la data de la escena previa
   let escenaAnt = [];
 
   function sceneAnterior(scene) {
@@ -482,47 +540,40 @@
     return escenaAnt;
   }
 
-  //cambiar texto
-  function cambiarTextos(id) {
-    if (id <= 2) {
-      let nuevotexto = document.createElement("div");
-      nuevotexto.textContent = textos[0].esp;
-      pPanelElementEsp.appendChild(nuevotexto);
-      est1On.classList.toggle("enabled");
-      est1Off.classList.toggle("enabled");
-      /*pPanelElementEsp.innerHTML = textos[0].esp;
-      pPanelElementIng.innerHTML = textos[0].ing;
-      est1On.classList.toggle("enabled");*/
-    } else if (id > 2 && id <= 7) {
-      pPanelElementEsp.innerHTML = textos[1].esp;
-      pPanelElementIng.innerHTML = textos[1].ing;
-      est2On.classList.toggle("enabled");
-      est2Off.classList.toggle("enabled");
-    } else if (id === 8) {
-      pPanelElementEsp.innerHTML = textos[2].esp;
-      pPanelElementIng.innerHTML = textos[2].ing;
-      est3On.classList.toggle("enabled");
-      est3Off.classList.toggle("enabled");
-    } else if (id > 8 && id <= 11) {
-      pPanelElementEsp.innerHTML = textos[3].esp;
-      pPanelElementIng.innerHTML = textos[3].ing;
-      est4On.classList.toggle("enabled");
-      est4Off.classList.toggle("enabled");
-    } else if (id > 11 && id <= 18) {
-      pPanelElementEsp.innerHTML = textos[4].esp;
-      pPanelElementIng.innerHTML = textos[4].ing;
-      est5On.classList.toggle("enabled");
-      est5Off.classList.toggle("enabled");
-    } else if (id >= 19) {
-      pPanelElementEsp.innerHTML = textos[5].esp;
-      pPanelElementIng.innerHTML = textos[5].ing;
-      est6On.classList.toggle("enabled");
-      est6Off.classList.toggle("enabled");
+  function switchScene(scene) {
+    let est = scene.data.estacion;
+    let tiempo = "sub2";
+
+    sceneAnterior(scene);
+    stopAutorotate();
+
+    let ivp2 = { ...scene.data.initialViewParameters };
+    let yaw = ivp2.yaw;
+    let pitch = ivp2.pitch;
+
+    if (scene.data.idn >= escenaAnt[0].data.idn || scene.data.idn == 8) {
+      scene.view.setParameters(scene.data.initialViewParameters);
+    } else if (scene.data.idn >= escenaAnt[0].data.idn || scene.data.idn == 7) {
+      ivp2.yaw = yaw + 2;
+      ivp2.pitch = pitch - 0.5;
+      scene.view.setParameters(ivp2);
+    } else {
+      ivp2.yaw = yaw + 3.15;
+      scene.view.setParameters(ivp2);
     }
+
+    scene.scene.switchTo();
+    startAutorotate();
+    updateSceneName(scene);
+    updateSceneList(scene);
+    mostrarMapa(scene.data.idn); //editado
+
+    posicionPunto(scene); //editado
+    mostrarPunto();
+    cambiarEstacion(scene.data.estacion, tiempo);
   }
 
   /*editado */
-
   function updateSceneName(scene) {
     sceneNameElement.innerHTML = sanitize(scene.data.name);
   }
@@ -585,7 +636,7 @@
 
     // Create image element.
     var icon = document.createElement("img");
-    icon.src = "img/link.png";
+    icon.src = "assets/link.png";
     icon.classList.add("link-hotspot-icon");
 
     // Set rotation transform.
@@ -634,7 +685,7 @@
     var iconWrapper = document.createElement("div");
     iconWrapper.classList.add("info-hotspot-icon-wrapper");
     var icon = document.createElement("img");
-    icon.src = "img/info.png";
+    icon.src = "assets/fotoIco.png";
     icon.classList.add("info-hotspot-icon");
     iconWrapper.appendChild(icon);
 
@@ -650,7 +701,7 @@
     var closeWrapper = document.createElement("div");
     closeWrapper.classList.add("info-hotspot-close-wrapper");
     var closeIcon = document.createElement("img");
-    closeIcon.src = "img/close.png";
+    closeIcon.src = "assets/cruz.png";
     closeIcon.classList.add("info-hotspot-close-icon");
     closeWrapper.appendChild(closeIcon);
 
@@ -696,6 +747,9 @@
     return wrapper;
   }
 
+  /*let = infoFoto.document.querySelector("info-hotspot");
+  infoFoto.addEventListener("click", console.log("click"));*/
+
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
     var eventList = [
@@ -732,6 +786,12 @@
   }
 
   //tracks
+  function ActualizarSub(time, todosSubs) {
+    const subtitulos = todosSubs[time];
+    if (subtitulos !== undefined) {
+      subElement.innerHTML = subtitulos;
+    }
+  }
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -740,11 +800,12 @@
     return `${minutes}:${returnedSeconds}`;
   };
 
-  /*
+  track.ontimeupdate = function () {
     currentTimeElement.textContent = calculateTime(
       track.duration - track.currentTime
-    )
-*/
+    );
+    ActualizarSub(Math.floor(track.currentTime), SUBS.estaciones[0]);
+  };
 
   function mute_sound() {
     track.volume = 0;
@@ -753,24 +814,18 @@
 
   function playTrack(tk) {
     track.src = tracks[tk].path;
-    pausesong();
-    console.log("sonido pausado");
+    track.play();
   }
 
   function pausesong() {
     track.pause();
+    console.log("sonido pausado");
   }
 
   function volume_change() {
     volume_show.innerHTML = recent_volume.value;
     track.volume = recent_volume.value / 100;
   }
-
-  function change_duration() {
-    slider_position = track.duration * (slider.value / 100);
-    track.currentTime = slider_position;
-  }
-
   // Display the initial scene.
   switchScene(scenes[0]);
 })();

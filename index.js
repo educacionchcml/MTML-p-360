@@ -36,16 +36,20 @@
   //***EDITANDO***
   //inicio
   let contenedorPlacaNegra = document.querySelector(".contenedorPlacaNegra");
+  let logosIber = document.querySelector(".logosIber");
+  let logosMuseos = document.querySelector(".logosMuseos");
   let boton360 = document.querySelector(".boton360");
+  let barrita = document.querySelector(".barrita");
 
   //nav
   let logoElement = document.querySelector(".logo");
   let botonIdioma = document.querySelector("#idioma");
-  let botonSubtitulos = document.querySelector("#subtitulos");
-  let ruedita = document.querySelector("#ruedita");
+  //let botonSubtitulos = document.querySelector("#subtitulos");
+  //let ruedita = document.querySelector("#ruedita");
 
   //estaciones
   let panelElement = document.querySelector(".ContenedorPanel");
+  let estacionesFondo = document.querySelector(".PanelTxt");
   let pPanelElementEsp = document.querySelector(".txt_esp");
   let pPanelElementIng = document.querySelector(".txt_ing");
   let estacionesOnElement = document.querySelector(".estacionesOn");
@@ -81,6 +85,8 @@
   let punto5Element = document.querySelector("#punto4");
   let punto4Element = document.querySelector("#punto5");
   let puntoActualElement = document.querySelector("#puntoActual");
+  let mapa1Img = document.querySelector(".mapaPrimerSub");
+  let mapa2Img = document.querySelector(".mapaSegundoSub");
 
   //subtitulos
   let subElement = document.querySelector(".sub");
@@ -94,6 +100,7 @@
   //empezar
   function empezar() {
     contenedorPlacaNegra.classList.add("disabled");
+    switchScene(scenes[0]);
     playTrack(0);
   }
 
@@ -118,21 +125,39 @@
 
   punto0Element.addEventListener("click", function () {
     switchScene(scenes[0]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto1Element.addEventListener("click", function () {
     switchScene(scenes[3]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto2Element.addEventListener("click", function () {
     switchScene(scenes[8]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto3Element.addEventListener("click", function () {
     switchScene(scenes[9]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto4Element.addEventListener("click", function () {
     switchScene(scenes[14]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
   punto5Element.addEventListener("click", function () {
     switchScene(scenes[12]);
+    if (document.body.classList.contains("mobile")) {
+      showMapa();
+    }
   });
 
   //posicionar punto indicador de la escena en curso
@@ -161,7 +186,7 @@
   }
   function mostrarPanel() {
     panelElement.classList.toggle("enabled");
-    estacionesOffElement.classList.toggle("enabled");
+    estacionesOffElement.classList.toggle("disabled");
     estacionesOnElement.classList.toggle("enabled");
     if (mapaElement.classList.contains("enabled")) {
       mapaElement.classList.toggle("enabled");
@@ -182,11 +207,17 @@
       segundoSubsueloMapaElement.style.display = "none";
       boton1erSubElement.style.display = "block";
       boton2doSubElement.style.display = "none";
+      //probando
+      vac1.style.visibility = "hidden";
+      vac2.style.visibility = "visible";
     } else {
       primerSubsueloMapaElement.style.display = "none";
       segundoSubsueloMapaElement.style.display = "block";
       boton1erSubElement.style.display = "none";
       boton2doSubElement.style.display = "block";
+      //probando
+      vac2.style.visibility = "hidden";
+      vac1.style.visibility = "visible";
     }
   }
 
@@ -232,6 +263,23 @@
     mql.addListener(setMode);
   } else {
     document.body.classList.add("desktop");
+  }
+
+  //mostrar assets para desktop o mobile
+  if (document.body.classList.contains("mobile")) {
+    mapa1Img.setAttribute("src", "/assets/mob_mapa1.png");
+    mapa2Img.setAttribute("src", "/assets/mob_mapa2.png");
+    estacionesFondo.setAttribute("src", "/assets/mob_paneltxt.png");
+    barrita.setAttribute("src", "./assets/mob_barrita.png");
+    logosIber.setAttribute("src", "./assets/mob_logosIber.png");
+    logosMuseos.setAttribute("src", "./assets/mob_logosMuseos.png");
+  } else {
+    mapa1Img.setAttribute("src", "/assets/desk_mapa1.png");
+    mapa2Img.setAttribute("src", "/assets/desk_mapa2.png");
+    estacionesFondo.setAttribute("src", "/assets/desk_paneltxt.png");
+    barrita.setAttribute("src", "./assets/desk_barrita.png");
+    logosIber.setAttribute("src", "./assets/desk_logosIber.png");
+    logosMuseos.setAttribute("src", "./assets/desk_logosMuseos.png");
   }
 
   // Detect whether we are on a touch device.
@@ -307,9 +355,9 @@
 
   // Set up autorotate, if enabled.
   var autorotate = Marzipano.autorotate({
-    yawSpeed: 0.03,
-    targetPitch: 0,
-    targetFov: Math.PI / 2,
+    yawSpeed: -0.02, //estaba 0.03
+    targetPitch: 0.3,
+    targetFov: Math.PI / 1, //estaba 2
   });
   if (data.settings.autorotateEnabled) {
     autorotateToggleElement.classList.add("enabled");
@@ -519,6 +567,7 @@
     updateSceneName(scene);
     updateSceneList(scene);
     mostrarMapa(scene.data.idn); //editado
+
     posicionPunto(scene); //editado
     mostrarPunto();
     cambiarEstacion(scene.data.estacion, tiempo);

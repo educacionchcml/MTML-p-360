@@ -3,7 +3,7 @@ var SUBS = {
     {
       1: "<p>Desde la llamada Procuraduría de las misiones</p>",
       4: "<p>edificada de 1730 con planos atribuidos <br> al arquitecto jesuita Juan Bautista Prímoli</p>",
-      10: "<p>ingresamos a los túneles de la Manzana de las Luces.</p>",
+      10: "<p>ingresamos a los túneles <br> de la Manzana de las Luces.</p>",
     },
     {
       sub1: "<p>En 1848, y como consecuencia de una investigación policial</p>",
