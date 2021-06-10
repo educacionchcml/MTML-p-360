@@ -34,8 +34,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 0, //-0.020138414446089214,
-        pitch: 0, //0.12127079011934683,
+        yaw: 0,
+        pitch: 0,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -54,6 +54,7 @@ var APP_DATA = {
           text: '<img src="./assets/greslebin.jpg" alt="greslebin">\n <p>Héctor Greslebin en uno de los túneles coloniales debajo de la Manzana de las Luces, 1920.</p>',
         },
       ],
+      pdfHotspots: [],
     },
     {
       id: "1-ps_2",
@@ -82,8 +83,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 0, //0.036249146002960586,
-        pitch: 0, //0.10421708525880646,
+        yaw: 0,
+        pitch: 0,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -100,7 +101,15 @@ var APP_DATA = {
           target: "0-ps_1",
         },
       ],
-      infoHotspots: [],
+      infoHotspots: [
+        {
+          yaw: 0.46955060082609634,
+          pitch: -0.01685690977725507,
+          title: "Perú 222",
+          text: '<img src="./assets/manzanaFrente.jpg" alt="manzanaFrente">\n <p>Fachada de la Manzana de las Luces desde la calle Perú.<br> Año 1936</p>',
+        },
+      ],
+      pdfHotspots: [],
     },
     {
       id: "2-ps_3",
@@ -129,8 +138,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: -0.3, //0.2309210066996279,
-        pitch: 0.2, //0.22169816318692526,
+        yaw: -0.3,
+        pitch: 0.2,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -142,7 +151,7 @@ var APP_DATA = {
         },
         {
           yaw: -0.06080380111174932,
-          pitch: 0.290090500694955,
+          pitch: 0.360090500694955,
           rotation: 0,
           target: "4-ps_5",
         },
@@ -166,6 +175,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "3-ps_4",
@@ -225,6 +235,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "4-ps_5",
@@ -272,6 +283,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "5-ps_6",
@@ -319,6 +331,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "6-ps_7",
@@ -353,8 +366,8 @@ var APP_DATA = {
       },
       linkHotspots: [
         {
-          yaw: 0.25315055903643824,
-          pitch: 0.10160290369149294,
+          yaw: 0.27315055903643824,
+          pitch: 0.12,
           rotation: 0,
           target: "7-ps_8",
         },
@@ -364,8 +377,16 @@ var APP_DATA = {
           rotation: 0,
           target: "5-ps_6",
         },
+        {
+          yaw: 0.21,
+          pitch: -0.11,
+          title: "Bajar al Segundo Subsuelo",
+          target: "1-ps_2",
+          imgIcon: "./assets/escaleraAbajo.png",
+        },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "7-ps_8",
@@ -394,17 +415,11 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 2.180689365674823,
-        pitch: 0.6650946021007478,
+        yaw: 0.5,
+        pitch: 0.2650946021007478,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
-        {
-          yaw: 2.2904429171103953,
-          pitch: 1.1208295531730528,
-          rotation: 0,
-          target: "8-ss_1",
-        },
         {
           yaw: -1.503186515414436,
           pitch: 0.46399555257412217,
@@ -417,8 +432,24 @@ var APP_DATA = {
           rotation: 0,
           target: "2-ps_3",
         },
+        {
+          yaw: 2.2904429171103953,
+          pitch: 1.1308295531730528,
+          rotation: 0,
+          target: "8-ss_1",
+          imgIcon: "./assets/linkLlenop.png",
+        },
+        {
+          yaw: 6.779307018506435,
+          pitch: 0.17,
+          title: "Bajar al segundo subsuelo",
+          rotation: 0,
+          target: "8-ss_1",
+          imgIcon: "./assets/escaleraAbajo.png",
+        },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "8-ss_1",
@@ -461,8 +492,10 @@ var APP_DATA = {
         {
           yaw: -0.8008896983791658,
           pitch: 0.031335268920276604,
+          title: "Subir al primer subsuelo",
           rotation: 0,
           target: "7-ps_8",
+          imgIcon: "./assets/escaleraArriba.png",
         },
         {
           yaw: -1.7085157766183716,
@@ -478,6 +511,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "9-ss_2",
@@ -537,6 +571,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "10-ss_3",
@@ -590,6 +625,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "11-ss_4",
@@ -636,7 +672,17 @@ var APP_DATA = {
           target: "10-ss_3",
         },
       ],
-      infoHotspots: [],
+      infoHotspots: [
+        {
+          yaw: 6.179307018506435,
+          pitch: -0.07,
+          title: "Africanismos",
+          target: "",
+          imgIcon: "./assets/link_africa.svg",
+          text: '<p> Descargá el PDF sobre africanismos en <a href="https://drive.google.com/file/d/1Gl-q-ZfjHLMg5owAo6JDGSaxzCe02hYt/view?usp=sharing">Este link</a></p>',
+        },
+      ],
+      pdfHotspots: [],
     },
     {
       id: "12-ss_5",
@@ -690,6 +736,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "13-ss_6",
@@ -737,6 +784,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "14-ss_7",
@@ -796,6 +844,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "15-ss_8",
@@ -849,6 +898,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "16-ss_9",
@@ -908,6 +958,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "17-ss_10",
@@ -961,6 +1012,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "18-ss_11",
@@ -1014,6 +1066,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "19-ss_12",
@@ -1061,6 +1114,7 @@ var APP_DATA = {
         },
       ],
       infoHotspots: [],
+      pdfHotspots: [],
     },
     {
       id: "20-ss_13",
@@ -1101,7 +1155,17 @@ var APP_DATA = {
           target: "19-ss_12",
         },
       ],
-      infoHotspots: [],
+      infoHotspots: [
+        {
+          yaw: 5.89307018506435,
+          pitch: -0.05,
+          title: "Arqueologia Urbana",
+          target: "",
+          imgIcon: "./assets/link_arqUrbana.svg",
+          text: '<a download="Africanismos.pdf" href="https://drive.google.com/file/d/1SZCqPVDwI59fJD0wk9P8xg_gvFDcPdw3/view?usp=sharing" >link para descargar Africanismos</a>',
+        },
+      ],
+      pdfHotspots: [],
     },
   ],
   name: "Project Title",

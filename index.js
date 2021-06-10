@@ -33,19 +33,17 @@
   var autorotateToggleElement = document.querySelector("#autorotateToggle");
   var fullscreenToggleElement = document.querySelector("#fullscreenToggle");
 
-  //***EDITANDO***
   //inicio
   let contenedorPlacaNegra = document.querySelector(".contenedorPlacaNegra");
   let logosIber = document.querySelector(".logosIber");
   let logosMuseos = document.querySelector(".logosMuseos");
+  let botonesInicio = document.querySelector(".botonesInicio");
   let boton360 = document.querySelector(".boton360");
   let barrita = document.querySelector(".barrita");
+  let botonJuego = document.querySelector(".botonJuego");
 
   //nav
   let logoElement = document.querySelector(".logo");
-  let botonIdioma = document.querySelector("#idioma");
-  //let botonSubtitulos = document.querySelector("#subtitulos");
-  //let ruedita = document.querySelector("#ruedita");
 
   //estaciones
   let panelElement = document.querySelector(".ContenedorPanel");
@@ -66,7 +64,11 @@
   let est4Off = document.querySelector("#est4Off");
   let est5Off = document.querySelector("#est5Off");
   let est6Off = document.querySelector("#est6Off");
-  let anchoMapa = document.querySelector("Subsuelos");
+  //let scrollUp = document.querySelector(".scrollUp");
+  //let scrollDown = document.querySelector(".scrollDown");
+  //let anchoMapa = document.querySelector("Subsuelos");
+
+  //scrollDown.addEventListener("click", pPanelElementEsp.scroll(100, 100));
 
   //recorrido
   let mapaElement = document.querySelector(".Mapa");
@@ -89,34 +91,126 @@
   let mapa2Img = document.querySelector(".mapaSegundoSub");
 
   //subtitulos
-  let subElement = document.querySelector(".sub");
+  let subElement = document.querySelector(".ContenedorSubs");
 
-  /*audio*/
+  //audio - idioma
+  let botonIdioma = document.querySelector(".lengua");
+  let audio = document.querySelector(".aud");
+  let currentTimeElement = document.querySelector("#currentTime");
   let track = document.createElement("audio");
   track.setAttribute("controls", true);
-  let muteElement = document.querySelector(".audios");
-  let currentTimeElement = document.querySelector("#currentTime");
 
   //empezar
   function empezar() {
     contenedorPlacaNegra.classList.add("disabled");
     switchScene(scenes[0]);
     playTrack(0);
+    puntoActualElement.style.top = "65%";
+    puntoActualElement.style.left = "28%";
+  }
+
+  function home() {
+    contenedorPlacaNegra.classList.remove("disabled");
+    contenedorPlacaNegra.style.visibility = "hidden";
+    botonesInicio.style.visibility = "visible";
+    botonesInicio.style.animationDuration = "1s";
+    botonesInicio.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    pausesong();
+  }
+
+  function seguir() {
+    contenedorPlacaNegra.classList.add("disabled");
+    pausesong();
   }
 
   boton360.addEventListener("click", empezar);
+  logoElement.addEventListener("click", home);
+  botonJuego.addEventListener("click", seguir);
 
   //cambiar idioma
   function cambiarIdioma() {
     pPanelElementEsp.classList.toggle("disabled");
     pPanelElementIng.classList.toggle("enabled");
+    document.querySelector("#idioma").classList.toggle("disabled");
+    document.querySelector("#language").classList.toggle("enabled");
+    if (
+      pPanelElementIng.classList.contains("enabled") &&
+      document.body.classList.contains("mobile")
+    ) {
+      est1Off.setAttribute("src", "/assets/ing_estacion1Off.svg");
+      est2Off.setAttribute("src", "/assets/ing_estacion2Off.svg");
+      est3Off.setAttribute("src", "/assets/ing_estacion3Off.svg");
+      est4Off.setAttribute("src", "/assets/ing_estacion4Off.svg");
+      est5Off.setAttribute("src", "/assets/ing_estacion5Off.svg");
+      est6Off.setAttribute("src", "/assets/ing_estacion6Off.svg");
+      est1On.setAttribute("src", "/assets/i_mob_estacion1On.svg");
+      est2On.setAttribute("src", "/assets/i_mob_estacion2On.svg");
+      est3On.setAttribute("src", "/assets/i_mob_estacion3On.svg");
+      est4On.setAttribute("src", "/assets/i_mob_estacion4On.svg");
+      est5On.setAttribute("src", "/assets/i_mob_estacion5On.svg");
+      est6On.setAttribute("src", "/assets/i_mob_estacion6On.svg");
+      recorridoOnElement.setAttribute("src", "/assets/ing_recorridoOn.svg");
+      recorridoOffElement.setAttribute("src", "/assets/ing_recorridoOff.svg");
+      boton1erSubElement.setAttribute("src", "/assets/ing_primerSub.svg");
+      boton2doSubElement.setAttribute("src", "/assets/ing_segundoSub.svg");
+    } else if (pPanelElementIng.classList.contains("enabled")) {
+      est1On.setAttribute("src", "/assets/ing_estacion1On.svg");
+      est2On.setAttribute("src", "/assets/ing_estacion2On.svg");
+      est3On.setAttribute("src", "/assets/ing_estacion3On.svg");
+      est4On.setAttribute("src", "/assets/ing_estacion4On.svg");
+      est5On.setAttribute("src", "/assets/ing_estacion5On.svg");
+      est6On.setAttribute("src", "/assets/ing_estacion6On.svg");
+      est1Off.setAttribute("src", "/assets/ing_estacion1Off.svg");
+      est2Off.setAttribute("src", "/assets/ing_estacion2Off.svg");
+      est3Off.setAttribute("src", "/assets/ing_estacion3Off.svg");
+      est4Off.setAttribute("src", "/assets/ing_estacion4Off.svg");
+      est5Off.setAttribute("src", "/assets/ing_estacion5Off.svg");
+      est6Off.setAttribute("src", "/assets/ing_estacion6Off.svg");
+      recorridoOnElement.setAttribute("src", "/assets/ing_recorridoOn.svg");
+      recorridoOffElement.setAttribute("src", "/assets/ing_recorridoOff.svg");
+      boton1erSubElement.setAttribute("src", "/assets/ing_primerSub.svg");
+      boton2doSubElement.setAttribute("src", "/assets/ing_segundoSub.svg");
+    } else if (document.body.classList.contains("mobile")) {
+      est1On.setAttribute("src", "/assets/mob_estacion1On.svg");
+      est2On.setAttribute("src", "/assets/mob_estacion2On.svg");
+      est3On.setAttribute("src", "/assets/mob_estacion3On.svg");
+      est4On.setAttribute("src", "/assets/mob_estacion4On.svg");
+      est5On.setAttribute("src", "/assets/mob_estacion5On.svg");
+      est6On.setAttribute("src", "/assets/mob_estacion6On.svg");
+      est1Off.setAttribute("src", "/assets/desk_estacion1Off.svg");
+      est2Off.setAttribute("src", "/assets/desk_estacion2Off.svg");
+      est3Off.setAttribute("src", "/assets/desk_estacion3Off.svg");
+      est4Off.setAttribute("src", "/assets/desk_estacion4Off.svg");
+      est5Off.setAttribute("src", "/assets/desk_estacion5Off.svg");
+      est6Off.setAttribute("src", "/assets/desk_estacion6Off.svg");
+      recorridoOnElement.setAttribute("src", "/assets/desk_recorridoOn.svg");
+      recorridoOffElement.setAttribute("src", "/assets/desk_recorridoOff.svg");
+      boton1erSubElement.setAttribute("src", "/assets/desk_primerSub.svg");
+      boton2doSubElement.setAttribute("src", "/assets/desk_segundoSub.svg");
+    } else {
+      est1On.setAttribute("src", "/assets/desk_estacion1On.svg");
+      est2On.setAttribute("src", "/assets/desk_estacion2On.svg");
+      est3On.setAttribute("src", "/assets/desk_estacion3On.svg");
+      est4On.setAttribute("src", "/assets/desk_estacion4On.svg");
+      est5On.setAttribute("src", "/assets/desk_estacion5On.svg");
+      est6On.setAttribute("src", "/assets/desk_estacion6On.svg");
+      est1Off.setAttribute("src", "/assets/desk_estacion1Off.svg");
+      est2Off.setAttribute("src", "/assets/desk_estacion2Off.svg");
+      est3Off.setAttribute("src", "/assets/desk_estacion3Off.svg");
+      est4Off.setAttribute("src", "/assets/desk_estacion4Off.svg");
+      est5Off.setAttribute("src", "/assets/desk_estacion5Off.svg");
+      est6Off.setAttribute("src", "/assets/desk_estacion6Off.svg");
+      recorridoOnElement.setAttribute("src", "/assets/desk_recorridoOn.svg");
+      recorridoOffElement.setAttribute("src", "/assets/desk_recorridoOff.svg");
+      boton1erSubElement.setAttribute("src", "/assets/desk_primerSub.svg");
+      boton2doSubElement.setAttribute("src", "/assets/desk_segundoSub.svg");
+    }
   }
 
   botonIdioma.addEventListener("click", cambiarIdioma);
 
   //botones (puntos) del mapa
   //mostrar punto actual si estaba oculto
-
   function mostrarPunto() {
     if (puntoActualElement.classList.contains("disabled")) {
       puntoActualElement.classList.remove("disabled");
@@ -174,6 +268,7 @@
     };
   }
 
+  //mostrar mapa(recorrido)
   function showMapa() {
     mapaElement.classList.toggle("enabled");
     recorridoOffElement.classList.toggle("disabled");
@@ -184,6 +279,8 @@
       estacionesOnElement.classList.toggle("enabled");
     }
   }
+
+  //mostrar panel (estciones)
   function mostrarPanel() {
     panelElement.classList.toggle("enabled");
     estacionesOffElement.classList.toggle("disabled");
@@ -245,8 +342,6 @@
   vac1.addEventListener("click", cambiar1Sub);
   vac2.addEventListener("click", cambiar2Sub);
 
-  //***EDITANDO***
-
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
     var setMode = function () {
@@ -273,6 +368,12 @@
     barrita.setAttribute("src", "./assets/mob_barrita.png");
     logosIber.setAttribute("src", "./assets/mob_logosIber.png");
     logosMuseos.setAttribute("src", "./assets/mob_logosMuseos.png");
+    est1On.setAttribute("src", "./assets/mob_estacion1On.svg");
+    est2On.setAttribute("src", "./assets/mob_estacion2On.svg");
+    est3On.setAttribute("src", "./assets/mob_estacion3On.svg");
+    est4On.setAttribute("src", "./assets/mob_estacion4On.svg");
+    est5On.setAttribute("src", "./assets/mob_estacion5On.svg");
+    est6On.setAttribute("src", "./assets/mob_estacion6On.svg");
   } else {
     mapa1Img.setAttribute("src", "/assets/desk_mapa1.png");
     mapa2Img.setAttribute("src", "/assets/desk_mapa2.png");
@@ -280,6 +381,12 @@
     barrita.setAttribute("src", "./assets/desk_barrita.png");
     logosIber.setAttribute("src", "./assets/desk_logosIber.png");
     logosMuseos.setAttribute("src", "./assets/desk_logosMuseos.png");
+    est1On.setAttribute("src", "./assets/desk_estacion1On.svg");
+    est2On.setAttribute("src", "./assets/desk_estacion2On.svg");
+    est3On.setAttribute("src", "./assets/desk_estacion3On.svg");
+    est4On.setAttribute("src", "./assets/desk_estacion4On.svg");
+    est5On.setAttribute("src", "./assets/desk_estacion5On.svg");
+    est6On.setAttribute("src", "./assets/desk_estacion6On.svg");
   }
 
   // Detect whether we are on a touch device.
@@ -484,9 +591,8 @@
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
   }
 
-  /***EDITADO***/
   //cambiar el numero en el boton estacion, cambiar el texto de los paneles
-  function cambiarEstacion(estacion, tiempo) {
+  function cambiarEstacion(estacion, idn, tiempo) {
     let todasEst = [
       est1On,
       est2On,
@@ -504,6 +610,10 @@
     todasEst.forEach((element) => element.classList.remove("enabled"));
     pPanelElementEsp.innerHTML = textos[`${estacion}`].esp;
     pPanelElementIng.innerHTML = textos[`${estacion}`].ing;
+    if (idn == 0) playTrack(`${estacion}`);
+    if (idn == 3) playTrack(`${estacion}`);
+    if (idn == 8) playTrack(`${estacion}`);
+    if (idn == 9) playTrack(`${estacion}`);
     return mostrarEstacion(estacion);
   }
 
@@ -551,12 +661,12 @@
     let yaw = ivp2.yaw;
     let pitch = ivp2.pitch;
 
-    if (scene.data.idn >= escenaAnt[0].data.idn || scene.data.idn == 8) {
+    if (
+      scene.data.idn >= escenaAnt[0].data.idn ||
+      scene.data.idn == 8 ||
+      scene.data.idn == 0
+    ) {
       scene.view.setParameters(scene.data.initialViewParameters);
-    } else if (scene.data.idn >= escenaAnt[0].data.idn || scene.data.idn == 7) {
-      ivp2.yaw = yaw + 2;
-      ivp2.pitch = pitch - 0.5;
-      scene.view.setParameters(ivp2);
     } else {
       ivp2.yaw = yaw + 3.15;
       scene.view.setParameters(ivp2);
@@ -566,14 +676,13 @@
     startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
-    mostrarMapa(scene.data.idn); //editado
-
-    posicionPunto(scene); //editado
+    mostrarMapa(scene.data.idn);
+    posicionPunto(scene);
     mostrarPunto();
-    cambiarEstacion(scene.data.estacion, tiempo);
+    cambiarEstacion(scene.data.estacion, scene.data.idn, tiempo);
+    console.log(scene.data.idn);
   }
 
-  /*editado */
   function updateSceneName(scene) {
     sceneNameElement.innerHTML = sanitize(scene.data.name);
   }
@@ -636,8 +745,16 @@
 
     // Create image element.
     var icon = document.createElement("img");
-    icon.src = "assets/link.png";
+    icon.src = hotspot.imgIcon || "assets/link.png";
     icon.classList.add("link-hotspot-icon");
+
+    //agregar clase escalera al wrapper
+    if (hotspot.hasOwnProperty("imgIcon")) {
+      wrapper.classList.add("escalera");
+    }
+    if (hotspot.imgIcon == "./assets/linkLlenop.png") {
+      wrapper.classList.add("linkLlenop");
+    }
 
     // Set rotation transform.
     var transformProperties = [
@@ -685,7 +802,7 @@
     var iconWrapper = document.createElement("div");
     iconWrapper.classList.add("info-hotspot-icon-wrapper");
     var icon = document.createElement("img");
-    icon.src = "assets/fotoIco.png";
+    icon.src = hotspot.imgIcon || "assets/fotoIco.png";
     icon.classList.add("info-hotspot-icon");
     iconWrapper.appendChild(icon);
 
@@ -701,7 +818,11 @@
     var closeWrapper = document.createElement("div");
     closeWrapper.classList.add("info-hotspot-close-wrapper");
     var closeIcon = document.createElement("img");
-    closeIcon.src = "assets/cruz.png";
+    if (document.body.classList.contains("mobile")) {
+      closeIcon.src = "assets/cruzNegra.svg";
+    } else {
+      closeIcon.src = "assets/cruz.png";
+    }
     closeIcon.classList.add("info-hotspot-close-icon");
     closeWrapper.appendChild(closeIcon);
 
@@ -714,6 +835,18 @@
     var text = document.createElement("div");
     text.classList.add("info-hotspot-text");
     text.innerHTML = hotspot.text;
+    /*var ampliar = document.createElement("div");
+    ampliar.classList.add("ampliar");
+    text.addEventListener("click", ampliar.classList.add("mostrar"));*/
+
+    //agregar clases linksPdf al wrapper
+    if (hotspot.hasOwnProperty("imgIcon")) {
+      header.classList.add("header-pdf");
+      iconWrapper.classList.add("iconWrapper-pdf");
+      titleWrapper.classList.add("titleWrapper-pdf");
+      closeWrapper.classList.add("closeIcon-pdf");
+      text.classList.add("text-pdf");
+    }
 
     // Place header and text into wrapper element.
     wrapper.appendChild(header);
@@ -746,9 +879,6 @@
 
     return wrapper;
   }
-
-  /*let = infoFoto.document.querySelector("info-hotspot");
-  infoFoto.addEventListener("click", console.log("click"));*/
 
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
@@ -786,10 +916,28 @@
   }
 
   //tracks
+  audio.addEventListener("click", function () {
+    document.querySelector("#audioOn").classList.toggle("disabled");
+    document.querySelector("#audioMute").classList.toggle("enabled");
+    mute_sound();
+  });
+
+  //colocar subs correspondientes al audio
   function ActualizarSub(time, todosSubs) {
     const subtitulos = todosSubs[time];
     if (subtitulos !== undefined) {
       subElement.innerHTML = subtitulos;
+    }
+  }
+
+  //esconder o mostrar subs y tiempo
+  function showTiempoSubs(track) {
+    if (track.duration - track.currentTime > 0) {
+      subElement.style.display = "block";
+      currentTimeElement.style.display = "block";
+    } else if (track.duration - track.currentTime === 0) {
+      subElement.style.display = "none";
+      currentTimeElement.style.display = "none";
     }
   }
 
@@ -801,31 +949,39 @@
   };
 
   track.ontimeupdate = function () {
+    let subInsert = escenaAnt[1].data.estacion;
     currentTimeElement.textContent = calculateTime(
       track.duration - track.currentTime
     );
-    ActualizarSub(Math.floor(track.currentTime), SUBS.estaciones[0]);
+    ActualizarSub(
+      Math.floor(track.currentTime),
+      SUBS.estaciones[`${subInsert}`]
+    );
+    showTiempoSubs(track);
   };
 
   function mute_sound() {
-    track.volume = 0;
-    volume.value = 0;
+    if (track.volume === 1) {
+      track.volume = 0;
+    } else if (track.volume === 0) {
+      track.volume = 1;
+    }
   }
 
   function playTrack(tk) {
     track.src = tracks[tk].path;
+    showTiempoSubs(track);
     track.play();
   }
 
   function pausesong() {
-    track.pause();
-    console.log("sonido pausado");
+    if (contenedorPlacaNegra.classList.contains("disabled")) {
+      track.play();
+    } else {
+      track.pause();
+    }
   }
 
-  function volume_change() {
-    volume_show.innerHTML = recent_volume.value;
-    track.volume = recent_volume.value / 100;
-  }
   // Display the initial scene.
   switchScene(scenes[0]);
 })();

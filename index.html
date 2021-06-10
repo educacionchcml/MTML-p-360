@@ -7,18 +7,14 @@
       name="viewport"
       content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
     />
-    <style>
-      @-ms-viewport {
-        width: device-width;
-      }
-    </style>
+    <style></style>
     <link rel="stylesheet" href="vendor/reset.min.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body class="multiple-scenes">
     <div id="pano"></div>
 
-    <!-- EDITANDO -->
     <div class="contenedorPlacaNegra">
       <div class="placaNegra">
         <img class="negro" src="./assets/placaNegra.png" alt="placaNegra" />
@@ -33,12 +29,13 @@
           alt="logosMuseos"
         />
       </div>
+
       <div class="botonesInicio">
-        <img class="boton360" src="./assets/desk_boton360.png" alt="boton360" />
+        <img class="boton360" src="./assets/boton360.svg" alt="boton360" />
         <img class="barrita" src="" alt="barrita" />
         <img
           class="botonJuego"
-          src="./assets/desk_botonJuego.png"
+          src="./assets/botonJuego.svg"
           alt="botonJuego"
         />
       </div>
@@ -46,54 +43,41 @@
 
     <div class="nav">
       <div class="logo">
-        <img id="menu" src="/assets/desk_logo.png" alt="menu" />
-      </div>
-
-      <div class="botones">
-        <!--<img id="subtitulos" src="/assets/desk_subs.png" alt="subtitulos" />-->
-
-        <img id="idioma" src="/assets/desk_idioma.png" alt="idioma" />
-      </div>
-
-      <!---<div class="navIzq">
-        <img id="ruedita" src="/assets/ruedita.png" alt="ruedita" />
-      </div>-->
-    </div>
-
-    <div class="ContenedorPanel">
-      <div class="Panel">
-        <img class="PanelTxt" src="" alt="panelTxt" />
-        <div class="cajaTexto">
-          <div class="txt_esp"></div>
-          <div class="txt_ing"></div>
-        </div>
+        <img id="menu" src="/assets/desk_logo.svg" alt="menu" />
       </div>
     </div>
 
     <div class="ContenedorMapa">
       <div class="recorrido">
-        <img
-          class="recorridoOn"
-          src="/assets/desk_recorridoOn.png"
-          alt="recorridoOn"
-        />
-        <img class="recorridoOff" src="/assets/desk_recorridoOff.png"
-        alt"recorridoOff" />
-        <div class="estacionesOn">
-          <img id="est1On" src="./assets/desk_estacion1On.png" alt="est1" />
-          <img id="est2On" src="./assets/desk_estacion2On.png" alt="est2" />
-          <img id="est3On" src="./assets/desk_estacion3On.png" alt="est3" />
-          <img id="est4On" src="./assets/desk_estacion4On.png" alt="est4" />
-          <img id="est5On" src="./assets/desk_estacion5On.png" alt="est5" />
-          <img id="est6On" src="./assets/desk_estacion6On.png" alt="est6" />
+        <div class="recorrido-botones">
+          <img
+            class="recorridoOn"
+            src="/assets/desk_recorridoOn.svg"
+            alt="recorridoOn"
+          />
+          <img
+            class="recorridoOff"
+            src="/assets/desk_recorridoOff.svg"
+            alt="recorridoOff"
+          />
         </div>
-        <div class="estacionesOff">
-          <img id="est1Off" src="./assets/desk_estacion1Off.png" alt="est1" />
-          <img id="est2Off" src="./assets/desk_estacion2Off.png" alt="est2" />
-          <img id="est3Off" src="./assets/desk_estacion3Off.png" alt="est3" />
-          <img id="est4Off" src="./assets/desk_estacion4Off.png" alt="est4" />
-          <img id="est5Off" src="./assets/desk_estacion5Off.png" alt="est5" />
-          <img id="est6Off" src="./assets/desk_estacion6Off.png" alt="est6" />
+        <div class="estaciones-botones">
+          <div class="estacionesOn">
+            <img id="est1On" src="./assets/desk_estacion1On.svg" alt="est1" />
+            <img id="est2On" src="./assets/desk_estacion2On.svg" alt="est2" />
+            <img id="est3On" src="./assets/desk_estacion3On.svg" alt="est3" />
+            <img id="est4On" src="./assets/desk_estacion4On.svg" alt="est4" />
+            <img id="est5On" src="./assets/desk_estacion5On.svg" alt="est5" />
+            <img id="est6On" src="./assets/desk_estacion6On.svg" alt="est6" />
+          </div>
+          <div class="estacionesOff">
+            <img id="est1Off" src="./assets/desk_estacion1Off.svg" alt="est1" />
+            <img id="est2Off" src="./assets/desk_estacion2Off.svg" alt="est2" />
+            <img id="est3Off" src="./assets/desk_estacion3Off.svg" alt="est3" />
+            <img id="est4Off" src="./assets/desk_estacion4Off.svg" alt="est4" />
+            <img id="est5Off" src="./assets/desk_estacion5Off.svg" alt="est5" />
+            <img id="est6Off" src="./assets/desk_estacion6Off.svg" alt="est6" />
+          </div>
         </div>
       </div>
 
@@ -101,20 +85,18 @@
         <div class="botonesSub">
           <img
             id="btn1sub"
-            src="/assets/desk_primerSub.png"
+            src="/assets/desk_primerSub.svg"
             alt="botonPrimerSub"
           />
 
           <img
             id="btn2sub"
-            src="/assets/desk_segundoSub.png"
+            src="/assets/desk_segundoSub.svg"
             alt="botonSegundoSub"
           />
           <div id="vacio1"></div>
           <div id="vacio2"></div>
         </div>
-
-        <!--- <img class="fondoMapa" src="/assets/fondoMapa.png" alt="fondoMapa" /> --->
 
         <div class="Subsuelos">
           <img id="puntoActual" src="/assets/ubicacion.png" alt="puntoActual" />
@@ -139,16 +121,46 @@
       </div>
     </div>
 
+    <div class="ContenedorPanel">
+      <div class="Panel">
+        <img class="PanelTxt" src="" alt="panelTxt" />
+        <div class="cajaTexto">
+          <div class="txt_esp"></div>
+          <div class="txt_ing"></div>
+        </div>
+
+        <!--
+        <div class="scrollUp">
+          <img src="/assets/ubicacion.png" alt="scroll" />
+        </div>
+        <div class="scrollDown">
+          <img src="/assets/ubicacion.png" alt="scroll" />
+        </div>
+        -->
+      </div>
+    </div>
+
     <div class="ContenedorTracks">
       <div class="audios">
-        <img id="audioOn" src="/assets/desk_audioOn.png" alt="audioOn" />
-        <img id="audioMute" src="/assets/desk_audioMute.png" alt="audioMute" />
+        <div class="lengua">
+          <img id="idioma" src="/assets/desk_idioma.svg" alt="idioma" />
+          <img id="language" src="/assets/desk_language.svg" alt="language" />
+        </div>
+
+        <div class="aud">
+          <img id="audioOn" src="/assets/desk_audioOn.svg" alt="audioOn" />
+          <img
+            id="audioMute"
+            src="/assets/desk_audioMute.svg"
+            alt="audioMute"
+          />
+        </div>
       </div>
       <span id="currentTime" class="time">0:00</span>
     </div>
 
     <div class="ContenedorSubs">
-      <p class="sub"></p>
+      <!-- <p class="sub"></p> -->
     </div>
 
     <!-- EDITANDO -->
