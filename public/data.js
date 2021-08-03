@@ -11,7 +11,7 @@ var APP_DATA = {
       id: "0-ps_1",
       idn: 0,
       estacion: 0,
-      name: "Estación 1 - 1",
+      name: "Estación 1",
       punto: punto0Element,
       levels: [
         {
@@ -60,7 +60,7 @@ var APP_DATA = {
       id: "1-ps_2",
       idn: 1,
       estacion: 0,
-      name: "Estación 1 - 2",
+      name: "Estación 1",
       punto: punto0Element,
       levels: [
         {
@@ -115,7 +115,7 @@ var APP_DATA = {
       id: "2-ps_3",
       idn: 2,
       estacion: 0,
-      name: "Estación 1 - 3",
+      name: "Estación 1",
       punto: punto0Element,
       levels: [
         {
@@ -138,18 +138,19 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: -0.3,
+        yaw: 0.5,
         pitch: 0.2,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
         {
-          yaw: 0.5471291502494857,
-          pitch: 0.4913624344863692,
+          yaw: 0.571291502494857,
+          pitch: 0.4013624344863692,
           rotation: 0,
           target: "3-ps_4",
+          imgIcon: "./assets/bnd2esp.svg",
         },
-        {
+        /*{
           yaw: -0.06080380111174932,
           pitch: 0.360090500694955,
           rotation: 0,
@@ -166,7 +167,7 @@ var APP_DATA = {
           pitch: 0.4103260459489846,
           rotation: 0,
           target: "7-ps_8",
-        },
+        },*/
         {
           yaw: -3.0207209510629216,
           pitch: 0.5927324952169091,
@@ -181,7 +182,7 @@ var APP_DATA = {
       id: "3-ps_4",
       idn: 3,
       estacion: 1,
-      name: "Estación 2 - 1",
+      name: "Estación 2",
       punto: punto1Element,
       levels: [
         {
@@ -210,10 +211,11 @@ var APP_DATA = {
       },
       linkHotspots: [
         {
-          yaw: -2.188186115150444,
-          pitch: 0.5276091247542549,
+          yaw: -2.288186115150444,
+          pitch: 0.43076091247542549,
           rotation: 0,
           target: "2-ps_3",
+          imgIcon: "./assets/bnd1esp.svg",
         },
         {
           yaw: -0.35064661923556706,
@@ -241,7 +243,7 @@ var APP_DATA = {
       id: "4-ps_5",
       idn: 4,
       estacion: 1,
-      name: "Estación 2 - 2",
+      name: "Estación 2",
       punto: punto1Element,
       levels: [
         {
@@ -289,7 +291,7 @@ var APP_DATA = {
       id: "5-ps_6",
       idn: 5,
       estacion: 1,
-      name: "Estación 2 - 3",
+      name: "Estación 2",
       punto: punto1Element,
       levels: [
         {
@@ -337,7 +339,7 @@ var APP_DATA = {
       id: "6-ps_7",
       idn: 6,
       estacion: 1,
-      name: "Estación 2 - 4",
+      name: "Estación 2",
       punto: punto1Element,
       levels: [
         {
@@ -381,7 +383,7 @@ var APP_DATA = {
           yaw: 0.21,
           pitch: -0.11,
           title: "Bajar al Segundo Subsuelo",
-          target: "1-ps_2",
+          target: "8-ss_1",
           imgIcon: "./assets/escaleraAbajo.png",
         },
       ],
@@ -392,7 +394,7 @@ var APP_DATA = {
       id: "7-ps_8",
       idn: 7,
       estacion: 1,
-      name: "Estación 2 - 5",
+      name: "Estación 2",
       punto: punto1Element,
       levels: [
         {
@@ -415,8 +417,8 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 0.5,
-        pitch: 0.2650946021007478,
+        yaw: 1.5,
+        pitch: 0.90650946021007478,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -428,16 +430,17 @@ var APP_DATA = {
         },
         {
           yaw: -2.6039307018506435,
-          pitch: 0.40401497052562796,
+          pitch: 0.35401497052562796,
           rotation: 0,
           target: "2-ps_3",
+          imgIcon: "./assets/bnd1esp.svg",
         },
         {
           yaw: 2.2904429171103953,
           pitch: 1.1308295531730528,
           rotation: 0,
           target: "8-ss_1",
-          imgIcon: "./assets/linkLlenop.png",
+          imgIcon: "./assets/bnd3esp.svg",
         },
         {
           yaw: 6.779307018506435,
@@ -455,7 +458,7 @@ var APP_DATA = {
       id: "8-ss_1",
       idn: 8,
       estacion: 2,
-      name: "Estación 3 - 1",
+      name: "Estación 3",
       punto: punto2Element,
       levels: [
         {
@@ -478,36 +481,39 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: -1.0757017506843383,
-        pitch: 0.15674143239424865,
+        yaw: -0.4757017506843383,
+        pitch: 0.1,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
         {
-          yaw: -0.1564433819693427,
-          pitch: 0.4084474858316032,
+          yaw: -0.2464433819693427,
+          pitch: 0.3084474858316032,
           rotation: 0,
           target: "9-ss_2",
+          imgIcon: "./assets/bnd4esp.svg",
         },
         {
-          yaw: -0.8008896983791658,
-          pitch: 0.031335268920276604,
+          yaw: -0.8308896983791658,
+          pitch: 0.071335268920276604,
           title: "Subir al primer subsuelo",
           rotation: 0,
           target: "7-ps_8",
           imgIcon: "./assets/escaleraArriba.png",
         },
         {
-          yaw: -1.7085157766183716,
-          pitch: 0.5078816117635672,
+          yaw: -1.7785157766183716,
+          pitch: 0.4078816117635672,
           rotation: 0,
           target: "14-ss_7",
+          imgIcon: "./assets/bnd5esp.svg",
         },
         {
-          yaw: 3.1106465236831884,
+          yaw: 3.0506465236831884,
           pitch: 0.5492005112615868,
           rotation: 0,
           target: "12-ss_5",
+          imgIcon: "./assets/bnd6esp.svg",
         },
       ],
       infoHotspots: [],
@@ -517,7 +523,7 @@ var APP_DATA = {
       id: "9-ss_2",
       idn: 9,
       estacion: 3,
-      name: "Estación 4 - 1",
+      name: "Estación 4",
       punto: punto3Element,
       levels: [
         {
@@ -546,22 +552,25 @@ var APP_DATA = {
       },
       linkHotspots: [
         {
-          yaw: -3.1196984750737187,
-          pitch: 0.7147662093648162,
+          yaw: -3.3196984750737187,
+          pitch: 0.4747662093648162,
           rotation: 0,
           target: "8-ss_1",
+          imgIcon: "./assets/bnd3esp.svg",
         },
         {
-          yaw: 3.1292818756890792,
-          pitch: 0.2487404041712633,
+          yaw: 3.0592818756890792,
+          pitch: 0.2687404041712633,
           rotation: 0,
-          target: "13-ss_6",
+          target: "12-ss_5",
+          imgIcon: "./assets/bnd6esp.svg",
         },
         {
-          yaw: -2.617510245768555,
-          pitch: 0.14140267189287314,
+          yaw: -2.717510245768555,
+          pitch: 0.30140267189287314,
           rotation: 0,
           target: "14-ss_7",
+          imgIcon: "./assets/bnd5esp.svg",
         },
         {
           yaw: 0.02811620669646331,
@@ -577,7 +586,7 @@ var APP_DATA = {
       id: "10-ss_3",
       idn: 10,
       estacion: 3,
-      name: "Estación 4 - 2",
+      name: "Estación 4",
       punto: punto3Element,
       levels: [
         {
@@ -618,10 +627,11 @@ var APP_DATA = {
           target: "9-ss_2",
         },
         {
-          yaw: -3.098034331260317,
-          pitch: 0.35654509718633776,
+          yaw: -3.208034331260317,
+          pitch: 0.26654509718633776,
           rotation: 0,
           target: "8-ss_1",
+          imgIcon: "./assets/bnd3esp.svg",
         },
       ],
       infoHotspots: [],
@@ -631,7 +641,7 @@ var APP_DATA = {
       id: "11-ss_4",
       idn: 11,
       estacion: 3,
-      name: "Estación 4 - 3",
+      name: "Estación 4",
       punto: punto3Element,
       levels: [
         {
@@ -676,10 +686,10 @@ var APP_DATA = {
         {
           yaw: 6.179307018506435,
           pitch: -0.07,
-          title: "Africanismos",
+          title: "Arqueologia Urbana",
           target: "",
-          imgIcon: "./assets/link_africa.svg",
-          text: '<p> Descargá el PDF sobre africanismos en <a href="https://drive.google.com/file/d/1Gl-q-ZfjHLMg5owAo6JDGSaxzCe02hYt/view?usp=sharing">Este link</a></p>',
+          imgIcon: "./assets/link_arqUrbana.svg",
+          text: '<p>Link para descargar<br><a download="Africanismos.pdf" href="https://drive.google.com/file/d/1SZCqPVDwI59fJD0wk9P8xg_gvFDcPdw3/view?usp=sharing">Arqueología Urbana</a></p>',
         },
       ],
       pdfHotspots: [],
@@ -688,7 +698,7 @@ var APP_DATA = {
       id: "12-ss_5",
       idn: 12,
       estacion: 5,
-      name: "Estación 6 - 1",
+      name: "Estación 6",
       punto: punto5Element,
       levels: [
         {
@@ -721,6 +731,7 @@ var APP_DATA = {
           pitch: 0.5132564652628808,
           rotation: 0,
           target: "8-ss_1",
+          imgIcon: "./assets/bnd3esp.svg",
         },
         {
           yaw: -0.007688345724325529,
@@ -729,10 +740,11 @@ var APP_DATA = {
           target: "13-ss_6",
         },
         {
-          yaw: 3.097310825374654,
-          pitch: 0.26442207857894395,
+          yaw: 3.037310825374654,
+          pitch: 0.22442207857894395,
           rotation: 0,
           target: "9-ss_2",
+          imgIcon: "./assets/bnd4esp.svg",
         },
       ],
       infoHotspots: [],
@@ -742,7 +754,7 @@ var APP_DATA = {
       id: "13-ss_6",
       idn: 13,
       estacion: 5,
-      name: "Estación 6 - 2",
+      name: "Estación 6",
       punto: punto5Element,
       levels: [
         {
@@ -776,21 +788,30 @@ var APP_DATA = {
           rotation: 0,
           target: "12-ss_5",
         },
-        {
+        /*{
           yaw: -2.917013465821599,
           pitch: 0.15788789902128286,
           rotation: 0,
           target: "8-ss_1",
+        },*/
+      ],
+      infoHotspots: [
+        {
+          yaw: 6.3,
+          pitch: -0.05,
+          title: "Futuros Imaginarios 2084",
+          target: "",
+          imgIcon: "./assets/link_futuros.svg",
+          text: '<p>Link para descargar<br><a download="Futuros.pdf" href="#">Futuros Imaginarios 2084</a></p>',
         },
       ],
-      infoHotspots: [],
       pdfHotspots: [],
     },
     {
       id: "14-ss_7",
       idn: 14,
       estacion: 4,
-      name: "Estación 5 - 1",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -814,27 +835,30 @@ var APP_DATA = {
       faceSize: 1440,
       initialViewParameters: {
         yaw: -0.1, //-0.3235565998987404,
-        pitch: 0.12695535840618177,
+        pitch: 0.3,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
         {
           yaw: 2.087841502223295,
-          pitch: 0.3850570876316155,
+          pitch: 0.3250570876316155,
           rotation: 0,
           target: "9-ss_2",
+          imgIcon: "./assets/bnd4esp.svg",
         },
         {
           yaw: 2.8439774259877018,
           pitch: 0.6064877343500044,
           rotation: 0,
           target: "8-ss_1",
+          imgIcon: "./assets/bnd3esp.svg",
         },
         {
-          yaw: -2.731644302043394,
-          pitch: 0.5197799218842807,
+          yaw: -2.901644302043394,
+          pitch: 0.4797799218842807,
           rotation: 0,
           target: "12-ss_5",
+          imgIcon: "./assets/bnd6esp.svg",
         },
         {
           yaw: -0.08552348764678541,
@@ -850,7 +874,7 @@ var APP_DATA = {
       id: "15-ss_8",
       idn: 15,
       estacion: 4,
-      name: "Estación 5 - 2",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -874,7 +898,7 @@ var APP_DATA = {
       faceSize: 1440,
       initialViewParameters: {
         yaw: -0.10875600416495246,
-        pitch: 0.089058236493889,
+        pitch: 0.3,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -892,9 +916,10 @@ var APP_DATA = {
         },
         {
           yaw: 3.0635460093378333,
-          pitch: 0.3581397256766259,
+          pitch: 0.2881397256766259,
           rotation: 0,
           target: "8-ss_1",
+          imgIcon: "./assets/bnd3esp.svg",
         },
       ],
       infoHotspots: [],
@@ -904,7 +929,7 @@ var APP_DATA = {
       id: "16-ss_9",
       idn: 16,
       estacion: 4,
-      name: "Estación 5 - 3",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -928,7 +953,7 @@ var APP_DATA = {
       faceSize: 1440,
       initialViewParameters: {
         yaw: -0.1074070905643314,
-        pitch: 0.06631996334651191,
+        pitch: 0.3,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -944,7 +969,7 @@ var APP_DATA = {
           rotation: 0,
           target: "15-ss_8",
         },
-        {
+        /*{
           yaw: 3.086329389291244,
           pitch: 0.3218668115373351,
           rotation: 0,
@@ -955,7 +980,7 @@ var APP_DATA = {
           pitch: 0.3504760106601754,
           rotation: 0,
           target: "18-ss_11",
-        },
+        },*/
       ],
       infoHotspots: [],
       pdfHotspots: [],
@@ -964,7 +989,7 @@ var APP_DATA = {
       id: "17-ss_10",
       idn: 17,
       estacion: 4,
-      name: "Estación 5 - 4",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -988,7 +1013,7 @@ var APP_DATA = {
       faceSize: 1440,
       initialViewParameters: {
         yaw: 1.5578239869965564,
-        pitch: 0.1932753217527008,
+        pitch: 0.3,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
@@ -1004,12 +1029,6 @@ var APP_DATA = {
           rotation: 0,
           target: "16-ss_9",
         },
-        {
-          yaw: -1.5395026499549598,
-          pitch: 0.3587691093939043,
-          rotation: 0,
-          target: "7-ps_8",
-        },
       ],
       infoHotspots: [],
       pdfHotspots: [],
@@ -1018,7 +1037,7 @@ var APP_DATA = {
       id: "18-ss_11",
       idn: 18,
       estacion: 4,
-      name: "Estación 5 - 5",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -1041,14 +1060,14 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        pitch: 0,
+        pitch: 0.3,
         yaw: 0,
         fov: 1.5707963267948966,
       },
       linkHotspots: [
         {
           yaw: 0.18230000438205352,
-          pitch: 0.17967637555756966,
+          pitch: 0.47967637555756966,
           rotation: 0,
           target: "19-ss_12",
         },
@@ -1058,12 +1077,6 @@ var APP_DATA = {
           rotation: 0,
           target: "17-ss_10",
         },
-        {
-          yaw: 3.112335967226157,
-          pitch: 0.34460483745115766,
-          rotation: 0,
-          target: "16-ss_9",
-        },
       ],
       infoHotspots: [],
       pdfHotspots: [],
@@ -1072,7 +1085,7 @@ var APP_DATA = {
       id: "19-ss_12",
       idn: 19,
       estacion: 4,
-      name: "Estación 5 - 6",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -1095,20 +1108,20 @@ var APP_DATA = {
       ],
       faceSize: 1440,
       initialViewParameters: {
-        yaw: 2.8394446412858,
+        yaw: 3,
         pitch: 0.10291686203492212,
         fov: 1.3074507059741394,
       },
       linkHotspots: [
         {
           yaw: 3.002791563467012,
-          pitch: 0.26748823168533775,
+          pitch: 0.39748823168533775,
           rotation: 0,
           target: "20-ss_13",
         },
         {
-          yaw: 0.12376887360832356,
-          pitch: 0.2717614917684976,
+          yaw: 0,
+          pitch: 0.4017614917684976,
           rotation: 0,
           target: "18-ss_11",
         },
@@ -1120,7 +1133,7 @@ var APP_DATA = {
       id: "20-ss_13",
       idn: 20,
       estacion: 4,
-      name: "Estación 5 - 7",
+      name: "Estación 5",
       punto: punto4Element,
       levels: [
         {
@@ -1149,8 +1162,8 @@ var APP_DATA = {
       },
       linkHotspots: [
         {
-          yaw: 2.8298255542723822,
-          pitch: 0.3320489907703852,
+          yaw: 2.7998255542723822,
+          pitch: 0.6220489907703852,
           rotation: 0,
           target: "19-ss_12",
         },
@@ -1159,10 +1172,10 @@ var APP_DATA = {
         {
           yaw: 5.89307018506435,
           pitch: -0.05,
-          title: "Arqueologia Urbana",
+          title: "Africanismos",
           target: "",
-          imgIcon: "./assets/link_arqUrbana.svg",
-          text: '<a download="Africanismos.pdf" href="https://drive.google.com/file/d/1SZCqPVDwI59fJD0wk9P8xg_gvFDcPdw3/view?usp=sharing" >link para descargar Africanismos</a>',
+          imgIcon: "./assets/link_africa.svg",
+          text: '<p>Link para descargar<br><a href="https://drive.google.com/file/d/1Gl-q-ZfjHLMg5owAo6JDGSaxzCe02hYt/view?usp=sharing">Africanismos</a><p>',
         },
       ],
       pdfHotspots: [],

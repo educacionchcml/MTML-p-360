@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Los misteriosos túneles</title>
+    <title>Los misteriosos túneles de la Manzana de las Luces</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -13,37 +13,35 @@
   </head>
 
   <body class="multiple-scenes">
-    <div id="pano"></div>
-
     <div class="contenedorPlacaNegra">
       <div class="placaNegra">
-        <img class="negro" src="./assets/placaNegra.png" alt="placaNegra" />
-        <img
-          class="logosIber"
-          src="./assets/desk_logosIber.png"
-          alt="logosIber"
-        />
-        <img
-          class="logosMuseos"
-          src="./assets/desk_logosMuseos.png"
-          alt="logosMuseos"
-        />
+        <img class="logosIber" src="./assets/mob_logosIber.png" alt="" />
+        <img class="logosMuseos" src="./assets/mob_logosMuseos.png" alt="" />
+        <img class="negro" src="./assets/placaNegra.png" alt="" />
       </div>
 
       <div class="botonesInicio">
-        <img class="boton360" src="./assets/boton360.svg" alt="boton360" />
-        <img class="barrita" src="" alt="barrita" />
+        <img
+          class="boton360"
+          src="./assets/boton360.svg"
+          tabindex="1"
+          alt="comenzar el recorrido"
+        />
+        <img class="barrita" src="" alt="" />
         <img
           class="botonJuego"
           src="./assets/botonJuego.svg"
-          alt="botonJuego"
+          tabindex="1"
+          alt="Video juego"
         />
       </div>
     </div>
 
+    <div id="pano"></div>
+
     <div class="nav">
-      <div class="logo">
-        <img id="menu" src="/assets/desk_logo.svg" alt="menu" />
+      <div class="logo" tabindex="8">
+        <img id="menu" src="/assets/desk_logo.svg" alt="volver a empezar" />
       </div>
     </div>
 
@@ -53,69 +51,171 @@
           <img
             class="recorridoOn"
             src="/assets/desk_recorridoOn.svg"
-            alt="recorridoOn"
+            alt="cerrar mapa"
+            tabindex="8"
           />
           <img
             class="recorridoOff"
             src="/assets/desk_recorridoOff.svg"
-            alt="recorridoOff"
+            alt="abrir mapa"
+            tabindex="8"
           />
         </div>
         <div class="estaciones-botones">
           <div class="estacionesOn">
-            <img id="est1On" src="./assets/desk_estacion1On.svg" alt="est1" />
-            <img id="est2On" src="./assets/desk_estacion2On.svg" alt="est2" />
-            <img id="est3On" src="./assets/desk_estacion3On.svg" alt="est3" />
-            <img id="est4On" src="./assets/desk_estacion4On.svg" alt="est4" />
-            <img id="est5On" src="./assets/desk_estacion5On.svg" alt="est5" />
-            <img id="est6On" src="./assets/desk_estacion6On.svg" alt="est6" />
+            <img
+              id="est1On"
+              src="./assets/desk_estacion1On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion uno"
+            />
+            <img
+              id="est2On"
+              src="./assets/desk_estacion2On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion dos"
+            />
+            <img
+              id="est3On"
+              src="./assets/desk_estacion3On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion tres"
+            />
+            <img
+              id="est4On"
+              src="./assets/desk_estacion4On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion cuatro"
+            />
+            <img
+              id="est5On"
+              src="./assets/desk_estacion5On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion cinco"
+            />
+            <img
+              id="est6On"
+              src="./assets/desk_estacion6On.svg"
+              tabindex="5"
+              alt="cerrar informacion de la estacion seis"
+            />
           </div>
           <div class="estacionesOff">
-            <img id="est1Off" src="./assets/desk_estacion1Off.svg" alt="est1" />
-            <img id="est2Off" src="./assets/desk_estacion2Off.svg" alt="est2" />
-            <img id="est3Off" src="./assets/desk_estacion3Off.svg" alt="est3" />
-            <img id="est4Off" src="./assets/desk_estacion4Off.svg" alt="est4" />
-            <img id="est5Off" src="./assets/desk_estacion5Off.svg" alt="est5" />
-            <img id="est6Off" src="./assets/desk_estacion6Off.svg" alt="est6" />
+            <img
+              id="est1Off"
+              src="./assets/desk_estacion1Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion uno"
+            />
+            <img
+              id="est2Off"
+              src="./assets/desk_estacion2Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion dos"
+            />
+            <img
+              id="est3Off"
+              src="./assets/desk_estacion3Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion tres"
+            />
+            <img
+              id="est4Off"
+              src="./assets/desk_estacion4Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion cuatro"
+            />
+            <img
+              id="est5Off"
+              src="./assets/desk_estacion5Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion cinco"
+            />
+            <img
+              id="est6Off"
+              src="./assets/desk_estacion6Off.svg"
+              tabindex="6"
+              alt="abrir informacion de la estacion seis"
+            />
           </div>
         </div>
       </div>
 
       <div class="Mapa">
+        <!--
+        <div class="avanzarRetroceder">
+          <p class="avanzar" tabindex="0" alt="avanzar a la proxima estacion">
+            AVANZAR
+          </p>
+          <p
+            class="retroceder"
+            tabindex="0"
+            alt="Retroceder a la estacion anterior"
+          >
+            RETROCEDER
+          </p>
+        </div>
+        -->
         <div class="botonesSub">
-          <img
-            id="btn1sub"
-            src="/assets/desk_primerSub.svg"
-            alt="botonPrimerSub"
-          />
+          <img id="btn1sub" src="/assets/desk_primerSub.svg" alt="" />
 
-          <img
-            id="btn2sub"
-            src="/assets/desk_segundoSub.svg"
-            alt="botonSegundoSub"
-          />
-          <div id="vacio1"></div>
-          <div id="vacio2"></div>
+          <img id="btn2sub" src="/assets/desk_segundoSub.svg" alt="" />
+          <div
+            id="vacio1"
+            tabindex="0"
+            alt="Primer Subsuelo. Estaciones 1 y 2"
+          ></div>
+          <div
+            id="vacio2"
+            tabindex="0"
+            alt="Segundo Subsuelo. Estaciones 3, 4, 5 y 6"
+          ></div>
         </div>
 
         <div class="Subsuelos">
-          <img id="puntoActual" src="/assets/ubicacion.png" alt="puntoActual" />
+          <img id="puntoActual" src="/assets/ubicacion.png" alt="" />
           <div class="primerSub">
-            <img class="mapaPrimerSub" src="" alt="MapaPrimerSub" />
-            <img id="punto0" src="/assets/punto.png" alt="punto0" />
-            <img id="punto1" src="/assets/punto.png" alt="punto1" />
+            <img class="mapaPrimerSub" src="" alt="" />
+            <img
+              id="punto0"
+              src="/assets/punto.png"
+              tabindex="0"
+              alt="ir a la estacion uno"
+            />
+            <img
+              id="punto1"
+              src="/assets/punto.png"
+              tabindex="1"
+              alt="ir a la estacion dos"
+            />
           </div>
 
           <div class="segundoSub">
+            <img class="mapaSegundoSub" src="/assets/desk_mapa2.png" alt="" />
             <img
-              class="mapaSegundoSub"
-              src="/assets/desk_mapa2.png"
-              alt="MapaSegundoSub"
+              id="punto2"
+              src="/assets/punto.png"
+              tabindex="0"
+              alt="ir a la estacion tres"
             />
-            <img id="punto2" src="/assets/punto.png" alt="punto2" />
-            <img id="punto3" src="/assets/punto.png" alt="punto3" />
-            <img id="punto4" src="/assets/punto.png" alt="punto4" />
-            <img id="punto5" src="/assets/punto.png" alt="punto5" />
+            <img
+              id="punto3"
+              src="/assets/punto.png"
+              tabindex="1"
+              alt="ir a la estacion cuatro"
+            />
+            <img
+              id="punto4"
+              src="/assets/punto.png"
+              tabindex="2"
+              alt="ir a la estacion seis"
+            />
+            <img
+              id="punto5"
+              src="/assets/punto.png"
+              tabindex="3"
+              alt="ir a la estacion cinco"
+            />
           </div>
         </div>
       </div>
@@ -123,7 +223,7 @@
 
     <div class="ContenedorPanel">
       <div class="Panel">
-        <img class="PanelTxt" src="" alt="panelTxt" />
+        <img class="PanelTxt" src="" alt="información" />
         <div class="cajaTexto">
           <div class="txt_esp"></div>
           <div class="txt_ing"></div>
@@ -142,21 +242,39 @@
 
     <div class="ContenedorTracks">
       <div class="audios">
-        <div class="lengua">
-          <img id="idioma" src="/assets/desk_idioma.svg" alt="idioma" />
-          <img id="language" src="/assets/desk_language.svg" alt="language" />
-        </div>
-
-        <div class="aud">
-          <img id="audioOn" src="/assets/desk_audioOn.svg" alt="audioOn" />
+        <!-- <div class="aud">
+          <img
+            id="audioOn"
+            src="/assets/desk_audioOn.svg"
+            tabindex="1"
+            alt="desactivar el audio"
+          />
           <img
             id="audioMute"
             src="/assets/desk_audioMute.svg"
-            alt="audioMute"
+            tabindex="2"
+            alt="activar el audio"
+          />
+        </div> -->
+        <div class="lengua">
+          <img
+            id="idioma"
+            src="/assets/desk_idioma.svg"
+            tabindex="7"
+            alt="cambiar idioma a ingles"
+          />
+          <img
+            id="language"
+            src="/assets/desk_language.svg"
+            tabindex="4"
+            alt="cambiar idioma a castellano"
           />
         </div>
+        <audio id="audioControl" alt="controlador del audio" controls></audio>
       </div>
-      <span id="currentTime" class="time">0:00</span>
+      <div class="contenedorTime">
+        <span id="currentTime" class="time"></span>
+      </div>
     </div>
 
     <div class="ContenedorSubs">
@@ -314,6 +432,8 @@
     >
       <img class="icon" src="img/minus.png" />
     </a>
+
+    <div class="fondoNegro"></div>
 
     <script src="vendor/screenfull.min.js"></script>
     <script src="vendor/bowser.min.js"></script>

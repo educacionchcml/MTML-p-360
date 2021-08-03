@@ -24,11 +24,14 @@
   var tracks = window.TRACKS.tracks;
   var subs = window.SUBS.estaciones;
 
+  var platform = window.navigator.platform;
+  var isIos = platform.includes("Mac" || "iP");
+
   // Grab elements from DOM.
   var panoElement = document.querySelector("#pano");
-  var sceneNameElement = document.querySelector("#titleBar .sceneName");
+  //var sceneNameElement = document.querySelector("#titleBar .sceneName");
   var sceneListElement = document.querySelector("#sceneList");
-  var sceneElements = document.querySelectorAll("#sceneList .scene");
+  //var sceneElements = document.querySelectorAll("#sceneList .scene");
   var sceneListToggleElement = document.querySelector("#sceneListToggle");
   var autorotateToggleElement = document.querySelector("#autorotateToggle");
   var fullscreenToggleElement = document.querySelector("#fullscreenToggle");
@@ -41,6 +44,7 @@
   let boton360 = document.querySelector(".boton360");
   let barrita = document.querySelector(".barrita");
   let botonJuego = document.querySelector(".botonJuego");
+  let fondoNegro = document.querySelector(".fondoNegro");
 
   //nav
   let logoElement = document.querySelector(".logo");
@@ -68,8 +72,6 @@
   //let scrollDown = document.querySelector(".scrollDown");
   //let anchoMapa = document.querySelector("Subsuelos");
 
-  //scrollDown.addEventListener("click", pPanelElementEsp.scroll(100, 100));
-
   //recorrido
   let mapaElement = document.querySelector(".Mapa");
   let primerSubsueloMapaElement = document.querySelector(".primerSub");
@@ -89,6 +91,8 @@
   let puntoActualElement = document.querySelector("#puntoActual");
   let mapa1Img = document.querySelector(".mapaPrimerSub");
   let mapa2Img = document.querySelector(".mapaSegundoSub");
+  //let avanzar = document.querySelector(".avanzar");
+  //let retroceder = document.querySelector(".retroceder");
 
   //subtitulos
   let subElement = document.querySelector(".ContenedorSubs");
@@ -97,29 +101,30 @@
   let botonIdioma = document.querySelector(".lengua");
   let audio = document.querySelector(".aud");
   let currentTimeElement = document.querySelector("#currentTime");
-  let track = document.createElement("audio");
-  track.setAttribute("controls", true);
+  currentTimeElement.style.visibility = "hidden";
+  let track = document.querySelector("#audioControl"); //let track = document.createElement("audio");
+  //track.setAttribute("controls", true);
 
   //empezar
   function empezar() {
     contenedorPlacaNegra.classList.add("disabled");
+    fondoNegro.style.display = "none";
     switchScene(scenes[0]);
-    playTrack(0);
-    puntoActualElement.style.top = "65%";
-    puntoActualElement.style.left = "28%";
+    playTrack(0), reproducidos.push("0");
   }
 
   function home() {
     contenedorPlacaNegra.classList.remove("disabled");
     contenedorPlacaNegra.style.visibility = "hidden";
     botonesInicio.style.visibility = "visible";
-    botonesInicio.style.animationDuration = "1s";
-    botonesInicio.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    botonesInicio.style.animationDuration = "0s";
+    fondoNegro.style.display = "block";
     pausesong();
   }
 
   function seguir() {
     contenedorPlacaNegra.classList.add("disabled");
+    fondoNegro.style.display = "none";
     pausesong();
   }
 
@@ -134,8 +139,8 @@
     document.querySelector("#idioma").classList.toggle("disabled");
     document.querySelector("#language").classList.toggle("enabled");
     if (
-      pPanelElementIng.classList.contains("enabled") &&
-      document.body.classList.contains("mobile")
+      document.body.classList.contains("mobile") &&
+      pPanelElementIng.classList.contains("enabled")
     ) {
       est1Off.setAttribute("src", "/assets/ing_estacion1Off.svg");
       est2Off.setAttribute("src", "/assets/ing_estacion2Off.svg");
@@ -439,6 +444,7 @@
 
     // Create link hotspots.
     data.linkHotspots.forEach(function (hotspot) {
+      //console.log(hotspot);
       var element = createLinkHotspotElement(hotspot);
       scene
         .hotspotContainer()
@@ -462,9 +468,9 @@
 
   // Set up autorotate, if enabled.
   var autorotate = Marzipano.autorotate({
-    yawSpeed: -0.02, //estaba 0.03
-    targetPitch: 0.3,
-    targetFov: Math.PI / 1, //estaba 2
+    yawSpeed: -0.01, //0.03
+    targetPitch: 0,
+    targetFov: Math.PI / 2,
   });
   if (data.settings.autorotateEnabled) {
     autorotateToggleElement.classList.add("enabled");
@@ -591,6 +597,8 @@
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
   }
 
+  let reproducidos = [];
+
   //cambiar el numero en el boton estacion, cambiar el texto de los paneles
   function cambiarEstacion(estacion, idn, tiempo) {
     let todasEst = [
@@ -607,14 +615,11 @@
       est5Off,
       est6Off,
     ];
+
     todasEst.forEach((element) => element.classList.remove("enabled"));
     pPanelElementEsp.innerHTML = textos[`${estacion}`].esp;
     pPanelElementIng.innerHTML = textos[`${estacion}`].ing;
-    if (idn == 0) playTrack(`${estacion}`);
-    if (idn == 3) playTrack(`${estacion}`);
-    if (idn == 8) playTrack(`${estacion}`);
-    if (idn == 9) playTrack(`${estacion}`);
-    return mostrarEstacion(estacion);
+    mostrarEstacion(estacion);
   }
 
   function mostrarEstacion(estacion) {
@@ -652,10 +657,12 @@
 
   function switchScene(scene) {
     let est = scene.data.estacion;
-    let tiempo = "sub2";
+    //let tiempo = track.duration - track.currentTime;
+    let idn = scene.data.idn;
 
     sceneAnterior(scene);
     stopAutorotate();
+    //startAutorotate();
 
     let ivp2 = { ...scene.data.initialViewParameters };
     let yaw = ivp2.yaw;
@@ -664,38 +671,111 @@
     if (
       scene.data.idn >= escenaAnt[0].data.idn ||
       scene.data.idn == 8 ||
-      scene.data.idn == 0
+      scene.data.idn == 0 ||
+      scene.data.idn == 3
     ) {
       scene.view.setParameters(scene.data.initialViewParameters);
+    } else if (scene.data.idn == 7 && escenaAnt[0].data.idn == 8) {
+      ivp2.pitch = pitch - 0.6;
+      ivp2.yaw = yaw + 2.6;
+      scene.view.setParameters(ivp2);
+    } else if (scene.data.idn == 12 && escenaAnt[0].data.idn == 14) {
+      ivp2.yaw = yaw + 0.8;
+      scene.view.setParameters(ivp2);
+    } else if (scene.data.idn == 9 && escenaAnt[0].data.idn == 12) {
+      ivp2.yaw = yaw + 0;
+      scene.view.setParameters(ivp2);
     } else {
       ivp2.yaw = yaw + 3.15;
       scene.view.setParameters(ivp2);
     }
 
-    scene.scene.switchTo();
-    startAutorotate();
-    updateSceneName(scene);
-    updateSceneList(scene);
-    mostrarMapa(scene.data.idn);
-    posicionPunto(scene);
-    mostrarPunto();
-    cambiarEstacion(scene.data.estacion, scene.data.idn, tiempo);
-    console.log(scene.data.idn);
-  }
+    function seguir() {
+      scene.scene.switchTo();
+      //startAutorotate();
+      mostrarMapa(scene.data.idn);
+      posicionPunto(scene);
+      mostrarPunto();
+      cambiarEstacion(est, scene.data.idn); //, tiempo);
+    }
 
-  function updateSceneName(scene) {
-    sceneNameElement.innerHTML = sanitize(scene.data.name);
-  }
+    /*
+    function preguntarSeguir() {
+      const modal = document.createElement("div");
+      modal.classList.add("preguntarSeguir");
+      const child = document.createElement("div");
+      child.classList.add("preguntarSeguir-child");
+      const text = document.createElement("p");
+      text.classList.add("preguntarSeguir-p");
+      const quedarse = document.createElement("div");
+      quedarse.classList.add("quedarse");
+      const seguirRecorrido = document.createElement("div");
+      seguirRecorrido.classList.add("seguir");
 
-  //resalta el nombre de la escena actual
-  function updateSceneList(scene) {
-    for (var i = 0; i < sceneElements.length; i++) {
-      var el = sceneElements[i];
-      if (el.getAttribute("data-id") === scene.data.id) {
-        el.classList.add("current");
+      if (pPanelElementIng.classList.contains("enabled")) {
+        text.innerHTML =
+          "<p>The audio must stop in order to continue<br>Do you wish to continue the tour?</p>";
+        quedarse.innerHTML = "<p>Keep listening</p>";
+        seguirRecorrido.innerHTML = "<p>Continue <br>with the tour</p>";
       } else {
-        el.classList.remove("current");
+        text.innerHTML =
+          "<p>Para continuar debe detenerse el audio en curso<br>¿Desea continuar el recorrido?</p>";
+        quedarse.innerHTML = "<p>Seguir<br>escuchando</p>";
+        seguirRecorrido.innerHTML = "<p>Continuar<br>recorrido</p>";
       }
+
+      modal.appendChild(child);
+      child.appendChild(text);
+      child.appendChild(quedarse);
+      child.appendChild(seguirRecorrido);
+
+      document.body.appendChild(modal);
+
+      function removeModal() {
+        const modal = document.querySelector(".preguntarSeguir");
+        if (modal) {
+          modal.remove();
+        }
+      }
+
+      function seguiryReproducior() {
+        seguir();
+        removeModal();
+        playTrack(`${est}`);
+        reproducidos.push(`${est}`);
+      }
+
+      modal.addEventListener("click", (event) => {
+        if (event.target.className === "preguntarSeguir") {
+          removeModal();
+        }
+      });
+
+      quedarse.addEventListener("click", removeModal);
+
+      seguirRecorrido.addEventListener("click", seguiryReproducior);
+    }
+    */
+
+    switch (idn) {
+      case 3:
+      case 8:
+      case 9:
+      case 12:
+      case 14:
+        /*if (reproducidos.indexOf(`${est}`) === -1 && !track.ended) {
+          preguntarSeguir();
+        } else */
+        if (reproducidos.indexOf(`${est}`) === -1) {
+          playTrack(`${est}`), reproducidos.push(`${est}`);
+          seguir();
+        } else {
+          seguir();
+        }
+        break;
+
+      default:
+        seguir();
     }
   }
 
@@ -745,16 +825,25 @@
 
     // Create image element.
     var icon = document.createElement("img");
-    icon.src = hotspot.imgIcon || "assets/link.png";
     icon.classList.add("link-hotspot-icon");
+    icon.src = hotspot.imgIcon || "assets/link.png";
+
+    //hotspot.imgIcon.slice(0, -7) + "ing.svg" || "assets/link.png";
 
     //agregar clase escalera al wrapper
     if (hotspot.hasOwnProperty("imgIcon")) {
       wrapper.classList.add("escalera");
+      if (hotspot.imgIcon.slice(9, 12) == "bnd") {
+        wrapper.classList.add("banderita");
+      }
     }
     if (hotspot.imgIcon == "./assets/linkLlenop.png") {
       wrapper.classList.add("linkLlenop");
     }
+
+    /*if (hotspot.imgIcon.slice(9, 11) == "es") {
+      wrapper.classList.add("banderita");
+    }*/
 
     // Set rotation transform.
     var transformProperties = [
@@ -835,18 +924,6 @@
     var text = document.createElement("div");
     text.classList.add("info-hotspot-text");
     text.innerHTML = hotspot.text;
-    /*var ampliar = document.createElement("div");
-    ampliar.classList.add("ampliar");
-    text.addEventListener("click", ampliar.classList.add("mostrar"));*/
-
-    //agregar clases linksPdf al wrapper
-    if (hotspot.hasOwnProperty("imgIcon")) {
-      header.classList.add("header-pdf");
-      iconWrapper.classList.add("iconWrapper-pdf");
-      titleWrapper.classList.add("titleWrapper-pdf");
-      closeWrapper.classList.add("closeIcon-pdf");
-      text.classList.add("text-pdf");
-    }
 
     // Place header and text into wrapper element.
     wrapper.appendChild(header);
@@ -862,6 +939,16 @@
       wrapper.classList.toggle("visible");
       modal.classList.toggle("visible");
     };
+
+    //agregar clases linksPdf al wrapper
+    if (hotspot.hasOwnProperty("imgIcon")) {
+      header.classList.add("header-pdf");
+      iconWrapper.classList.add("iconWrapper-pdf");
+      titleWrapper.classList.add("titleWrapper-pdf");
+      closeWrapper.classList.add("closeIcon-pdf");
+      text.classList.add("text-pdf");
+      modal.classList.add("modal-pdf");
+    }
 
     // Show content when hotspot is clicked.
     wrapper
@@ -916,11 +1003,19 @@
   }
 
   //tracks
+  /*if (window.navigator.vendor === "Google Inc.") {
+      track.src = tracks[tk].pathOgg;
+    } else {
+      track.src = tracks[tk].pathMp3;
+    }
+  */
+  /*
   audio.addEventListener("click", function () {
     document.querySelector("#audioOn").classList.toggle("disabled");
     document.querySelector("#audioMute").classList.toggle("enabled");
     mute_sound();
   });
+  */
 
   //colocar subs correspondientes al audio
   function ActualizarSub(time, todosSubs) {
@@ -941,24 +1036,32 @@
     }
   }
 
+  //formatea minutos y segundos
   const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${minutes}:${returnedSeconds}`;
+    if (isNaN(secs)) {
+      return "cargando...";
+    } else {
+      const minutes = Math.floor(secs / 60);
+      const seconds = Math.floor(secs % 60);
+      const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+      return `${minutes}:${returnedSeconds}`;
+    }
   };
 
-  track.ontimeupdate = function () {
-    let subInsert = escenaAnt[1].data.estacion;
-    currentTimeElement.textContent = calculateTime(
-      track.duration - track.currentTime
-    );
-    ActualizarSub(
-      Math.floor(track.currentTime),
-      SUBS.estaciones[`${subInsert}`]
-    );
-    showTiempoSubs(track);
-  };
+  function actualizarSubtitulos(tk) {
+    track.ontimeupdate = function () {
+      currentTimeElement.textContent = calculateTime(
+        track.duration - track.currentTime
+      );
+      if (pPanelElementIng.classList.contains("enabled")) {
+        ActualizarSub(Math.floor(track.currentTime), SUBS.stations[`${tk}`]);
+        showTiempoSubs(track);
+      } else {
+        ActualizarSub(Math.floor(track.currentTime), SUBS.estaciones[`${tk}`]);
+        showTiempoSubs(track);
+      }
+    };
+  }
 
   function mute_sound() {
     if (track.volume === 1) {
@@ -969,9 +1072,13 @@
   }
 
   function playTrack(tk) {
-    track.src = tracks[tk].path;
-    showTiempoSubs(track);
+    if (!isIos) {
+      track.setAttribute("src", tracks[tk].pathMp3); //track.src = tracks[tk].pathOgg;
+    } else {
+      track.setAttribute("src", tracks[tk].pathMp3); //track.src = tracks[tk].pathMp3;
+    }
     track.play();
+    actualizarSubtitulos(tk);
   }
 
   function pausesong() {
@@ -981,7 +1088,20 @@
       track.pause();
     }
   }
+  /*
+  console.log(escenaAnt);
 
+  function siguienteEstacion() {
+    switchScene(scenes[++]);
+  }
+
+  function anteriorEstacion() {
+    switchScene(scenes[--]);
+  }
+
+  avanzar.addEventListener("click", siguienteEstacion);
+  retroceder.addEventListener("click", anteriorEstacion);
+*/
   // Display the initial scene.
   switchScene(scenes[0]);
 })();
