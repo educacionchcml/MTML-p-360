@@ -661,8 +661,8 @@
     let idn = scene.data.idn;
 
     sceneAnterior(scene);
-    stopAutorotate();
-    //startAutorotate();
+    //stopAutorotate();
+    startAutorotate();
 
     let ivp2 = { ...scene.data.initialViewParameters };
     let yaw = ivp2.yaw;
